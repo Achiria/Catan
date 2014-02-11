@@ -17,15 +17,22 @@
  */
 package catan1.pkg1;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 public class Board
 {
     private final int HEIGHT = 7;
     private final int WIDTH = 7;
+    ArrayList<Integer> resources = new ArrayList();
+    
     public static Tile[][] table;
 
     /**
      * creates the board the game will be played on
-     * @throws invalidLocationException 
+     *
+     * @throws invalidLocationException
      */
     public Board() throws invalidLocationException
     {
@@ -42,9 +49,9 @@ public class Board
         }
 
         /**
-         * traces through the 2d array and initializes each tile with new intersections
-         * and makes sure that each intersection that is shared between tiles 
-         * is actually shared. Same goes with creases
+         * traces through the 2d array and initializes each tile with new
+         * intersections and makes sure that each intersection that is shared
+         * between tiles is actually shared. Same goes with creases
          */
         for (int i = 0; i < WIDTH; i++)
         {
@@ -56,7 +63,7 @@ public class Board
                     //the top-most position
                     if (j == 0)
                     {
-                        
+
                         //initializes new intersections because it is the first tile
                         table[0][0].setInter(new Intersection(0, 0), new Intersection(1, 0), new Intersection(0, 1),
                                 new Intersection(1, 1), new Intersection(0, 2), new Intersection(1, 2));
@@ -75,13 +82,14 @@ public class Board
                     {
                         /**
                          * initializes new intersections except for those shared
-                         * with the tiles above it, namely tL and tR and lL and lR
+                         * with the tiles above it, namely tL and tR and lL and
+                         * lR
                          */
                         table[0][j].setInter(table[0][j - 1].get("LL"), table[0][j - 1].get("LR"), new Intersection(0, 2 * j + 1),
                                 new Intersection(1, 2 * j + 1), new Intersection(0, 2 * j + 2), new Intersection(1, 2 * j + 2));
 
                         /**
-                         * initializes new crease except for those shared with 
+                         * initializes new crease except for those shared with
                          * the tiles above it, namely t and b
                          */
                         table[0][j].setCrease(table[0][j - 1].getCrease("b"),
@@ -102,10 +110,10 @@ public class Board
                     if (j == 0)
                     {
                         /**
-                         * makes sure to also share intersections and creases with 
-                         * the tiles that are now to the left 
+                         * makes sure to also share intersections and creases
+                         * with the tiles that are now to the left
                          */
-                        
+
                         table[1][0].setInter(table[0][0].get("MR"), new Intersection(2, 0), table[0][0].get("LR"),
                                 new Intersection(2, 1), table[0][1].get("MR"), new Intersection(2, 2));
 
@@ -410,6 +418,21 @@ public class Board
                     }
 
                     table[i][j].setType("water");
+                }
+            }
+        }
+
+        resources.addAll(Arrays.asList(0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5));
+        Random ran = new Random();
+        for (int i = 0; i < WIDTH; i++)
+        {
+            for (int j = 0; j < HEIGHT; j++)
+            {
+                if (table[i][j].getLand())
+                {
+                    int temp = ran.nextInt(resources.size());
+                    table[i][j].setResource(resources.get(temp));
+                    resources.remove(temp);
                 }
             }
         }

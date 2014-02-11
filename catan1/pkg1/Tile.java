@@ -139,6 +139,7 @@ public class Tile
 
     public Intersection get(String str) throws invalidLocationException
     {
+        str = str.toUpperCase();
         switch (str)
         {
             case "TL":
@@ -160,19 +161,20 @@ public class Tile
 
     public Crease getCrease(String str) throws invalidLocationException
     {
+        str = str.toUpperCase();
         switch (str)
         {
-            case "t":
+            case "T":
                 return top;
-            case "uL":
+            case "UL":
                 return upperLeft;
-            case "lL":
+            case "LL":
                 return lowerLeft;
-            case "uR":
+            case "UR":
                 return upperRight;
-            case "lR":
+            case "LR":
                 return lowerRight;
-            case "b":
+            case "B":
                 return bottom;
             default:
                 throw new invalidLocationException("FAIL at getting crease in tile");

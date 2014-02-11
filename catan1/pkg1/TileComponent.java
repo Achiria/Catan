@@ -25,6 +25,10 @@ import javax.swing.JComponent;
 
 public class TileComponent extends JComponent
 {
+    private Color limeGreen = new Color(173, 255, 47);
+    private Color darkGreen = new Color(34, 139, 34);
+    private Color brickRed = new Color(139, 26, 26);
+    
     @Override
     public void paintComponent(Graphics g)
     {
@@ -34,26 +38,24 @@ public class TileComponent extends JComponent
         final int HEIGHT = 7;
         final int xDiff = 120;
         final int yDiff = 138;
-
-        //TR, TL, ML, LL, LR, MR, TR
+        
+        //TR, TL, ML, LL, LR, MR
         int[] x =
         {
-            140, 60, 20, 60, 140, 180, 140
+            140, 60, 20, 60, 140, 180
         };
-        //TR, TL, ML, LL, LR, MR, TR
+        //TR, TL, ML, LL, LR, MR
         int[] y =
         {
-            31, 31, 100, 169, 169, 100, 31
+            31, 31, 100, 169, 169, 100
         };
-
-        GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
 
         for (int i = 0; i < WIDTH; i++)
         {
-            polygon.moveTo(x[0] + i * xDiff, y[0] + i * yDiff);
-
             for (int j = 0; j < HEIGHT; j++)
             {
+                GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+
                 if (i % 2 != 0)
                 {
                     polygon.moveTo(x[0] + i * xDiff, y[0] + j * yDiff + 69);
@@ -76,9 +78,47 @@ public class TileComponent extends JComponent
                         polygon.lineTo(x[k] + i * xDiff, y[k] + j * yDiff);
                     }
                 }
+                
+                polygon.closePath();
+                
+                if (Board.table[i][j].getLand() != true)
+                {
+                    g2.setColor(Color.CYAN);
+                }
+
+                //if it is hay
+                else if (Board.table[i][j].getResource() == 0)
+                {
+                    g2.setColor(Color.YELLOW);
+                }
+                
+                //if it is sheep
+                else if (Board.table[i][j].getResource() == 1)
+                {
+                    g2.setColor(limeGreen);
+                }
+                
+                //if it is wood
+                else if (Board.table[i][j].getResource() == 2)
+                {
+                    g2.setColor(darkGreen);
+                }
+                
+                //if it is brick
+                else if (Board.table[i][j].getResource() == 3)
+                {
+                    g2.setColor(brickRed);
+                }
+                
+                //if it is ore
+                else
+                {
+                    g2.setColor(Color.DARK_GRAY);
+                }
+
+                g2.fill(polygon);
+                g2.draw(polygon);
             }
         }
-
-        g2.draw(polygon);
     }
 }

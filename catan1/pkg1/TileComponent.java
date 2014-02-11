@@ -28,6 +28,7 @@ public class TileComponent extends JComponent
     private Color limeGreen = new Color(173, 255, 47);
     private Color darkGreen = new Color(34, 139, 34);
     private Color brickRed = new Color(139, 26, 26);
+    private Color desertTan = new Color(210, 180, 140);
     
     @Override
     public void paintComponent(Graphics g)
@@ -111,9 +112,15 @@ public class TileComponent extends JComponent
                 }
                 
                 //if it is ore
-                else
+                else if (Board.table[i][j].getResource() == 4)
                 {
                     g2.setColor(Color.DARK_GRAY);
+                }
+                
+                //if it is desert
+                else
+                {
+                    g2.setColor(desertTan);
                 }
 
                 g2.fill(polygon);

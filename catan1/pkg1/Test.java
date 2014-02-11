@@ -19,6 +19,7 @@ package catan1.pkg1;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 public class Test
 {
@@ -34,8 +35,14 @@ public class Test
         frame.setTitle("Catan");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        
         TileComponent component = new TileComponent();
+                
+        JLayeredPane boardLayer = new JLayeredPane();
+        boardLayer.setLayer(component, 0);
+        boardLayer.setVisible(true);
         frame.add(component);
+        
         frame.setVisible(true);
 
         try

@@ -17,168 +17,58 @@
  */
 package catan1.pkg1;
 
-public class Tile
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+
+public class Test
 {
-    private int x;
-    private int y;
-
-    private Intersection topLeft;
-    private Intersection topRight;
-    private Intersection midLeft;
-    private Intersection midRight;
-    private Intersection lowLeft;
-    private Intersection lowRight;
-
-    private Crease top;
-    private Crease upperLeft;
-    private Crease lowerLeft;
-    private Crease bottom;
-    private Crease upperRight;
-    private Crease lowerRight;
-
-    private boolean land;
-    private int numb;
-    private boolean robber;
-    private int resource;
-
-    public Tile(int setX, int setY)
+    public static void main(String[] args) throws invalidLocationException
     {
-        x = setX;
-        y = setY;
+        Player p1 = new Player("Anthony", Color.BLUE);
+        Player p2 = new Player("Donovon", Color.ORANGE);
+        Player p3 = new Player("Andrew", Color.RED);
+        Player p4 = new Player("Brian", Color.GREEN);
 
-        topLeft = new Intersection();
-        topRight = new Intersection();
-        midLeft = new Intersection();
-        midRight = new Intersection();
-        lowLeft = new Intersection();
-        lowRight = new Intersection();
+        Board thingy = new Board();
 
-        top = new Crease();
-        upperLeft = new Crease();
-        lowerLeft = new Crease();
-        upperRight = new Crease();
-        lowerRight = new Crease();
-        bottom = new Crease();
+        JFrame frame = new JFrame();
+        frame.setSize(2000, 1150);
+        frame.setTitle("Catan");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        land = false;
-    }
+        TileComponent component = new TileComponent();
 
-    public void setInter(Intersection tL, Intersection tR, Intersection mL,
-            Intersection mR, Intersection lL, Intersection lR)
-    {
-        topLeft = tL;
-        topRight = tR;
-        midLeft = mL;
-        midRight = mR;
-        lowLeft = lL;
-        lowRight = lR;
-    }
+        JLayeredPane boardLayer = new JLayeredPane();
+        boardLayer.setLayer(component, 0);
+        boardLayer.setVisible(true);
+        frame.add(component);
 
-    public void setCrease(Crease t, Crease uL, Crease lL,
-            Crease uR, Crease lR, Crease b)
-    {
-        top = t;
-        upperLeft = uL;
-        lowerLeft = lL;
-        bottom = b;
-        upperRight = uR;
-        lowerRight = lR;
-    }
+        frame.setVisible(true);
 
-    public void setType(String str)
-    {
-        land = !str.equals("water");
-    }
-
-    public void setResource(String str)
-    {
-        //  hay = 0
-        //  sheep = 1
-        //  wood = 2
-        //  brick = 3
-        //  ore = 4
-        switch (str)
+//        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
-            case "hay":
-                resource = 0;
-            case "sheep":
-                resource = 1;
-            case "wood":
-                resource = 2;
-            case "brick":
-                resource = 3;
-            case "ore":
-                resource = 4;
-        }
-    }
+            //print board
+            //check whose turn
+            try
+            {
+                p1.buildSettlement(2, 2, "MR");
+                p1.buildSettlement(5, 3, "MR");
+                p2.buildSettlement(4, 5, "TR");
+                p1.buildSettlement(2, 2, "ML");
+                p1.buildSettlement(3, 2, "TL");
+                p3.buildSettlement(0, 0, "TL");
+            }
 
-    public void setNumb(int newNumb)
-    {
-        numb = newNumb;
-    }
+            catch (invalidLocationException e)
+            {
+                System.out.println("FAIL");
+            }
 
-    public int getX()
-    {
-        return x;
-    }
+            SettlementComponent comp = new SettlementComponent();
+            frame.add(comp);
 
-    public int getY()
-    {
-        return y;
-    }
-
-    public boolean getLand()
-    {
-        return land;
-    }
-        
-    public int getResource()
-    {
-        return resource;
-    }
-
-    public Intersection get(String str) throws invalidLocationException
-    {
-        str = str.toUpperCase();
-        switch (str)
-        {
-            case "TL":
-                return topLeft;
-            case "TR":
-                return topRight;
-            case "ML":
-                return midLeft;
-            case "MR":
-                return midRight;
-            case "LL":
-                return lowLeft;
-            case "LR":
-                return lowRight;
-            default:
-                throw new invalidLocationException("FAIL at getting intersection in tile ");
-        }
-    }
-
-    public Crease getCrease(String str) throws invalidLocationException
-    {
-        str = str.toUpperCase();
-        switch (str)
-        {
-            case "T":
-                return top;
-            case "UL":
-                return upperLeft;
-            case "LL":
-                return lowerLeft;
-            case "UR":
-                return upperRight;
-            case "LR":
-                return lowerRight;
-            case "B":
-                return bottom;
-            default:
-                throw new invalidLocationException("FAIL at getting crease in tile");
-
+            frame.setVisible(true);
         }
     }
 }

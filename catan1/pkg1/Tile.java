@@ -59,6 +59,8 @@ public class Tile
         upperRight = new Crease();
         lowerRight = new Crease();
         bottom = new Crease();
+
+        land = false;
     }
 
     public void setInter(Intersection tL, Intersection tR, Intersection mL,
@@ -91,10 +93,10 @@ public class Tile
     public void setResource(String str)
     {
         //  hay = 0
-//  sheep = 1
-//  wood = 2
-//  brick = 3
-//  ore = 4
+        //  sheep = 1
+        //  wood = 2
+        //  brick = 3
+        //  ore = 4
         switch (str)
         {
             case "hay":
@@ -128,6 +130,11 @@ public class Tile
     public boolean getLand()
     {
         return land;
+    }
+        
+    public int getResource()
+    {
+        return resource;
     }
 
     public Intersection get(String str) throws invalidLocationException

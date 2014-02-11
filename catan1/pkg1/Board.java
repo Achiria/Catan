@@ -113,7 +113,7 @@ public class Board
                                 new Crease(table[1][6].get("lL"), table[1][6].get("lR")));
                     }
 
-                    if (j == 1 || j == 5 || j == 6)
+                    if (j <= 1 || j >= 5)
                     {
                         table[i][j].setType("water");
                     }
@@ -166,7 +166,7 @@ public class Board
                                 new Crease(table[2][6].get("lL"), table[2][6].get("lR")));
                     }
 
-                    if (j == 0 || j == 5)
+                    if (j <= 1 || j >= 6)
                     {
                         table[i][j].setType("water");
                     }
@@ -218,7 +218,7 @@ public class Board
                                 new Crease(table[3][6].get("lL"), table[3][6].get("lR")));
                     }
 
-                    if (j == 0 || j == 6)
+                    if (j == 0 || j >= 6)
                     {
                         table[i][j].setType("water");
                     }
@@ -270,7 +270,7 @@ public class Board
                                 new Crease(table[4][6].get("lL"), table[4][6].get("lR")));
                     }
 
-                    if (j == 0 || j == 5)
+                    if (j <= 1 || j >= 6)
                     {
                         table[i][j].setType("water");
                     }
@@ -323,7 +323,7 @@ public class Board
 
                     }
 
-                    if (j == 0 || j == 1 || j == 5 || j == 6)
+                    if (j <= 1 || j >= 5)
                     {
                         table[i][j].setType("water");
                     }

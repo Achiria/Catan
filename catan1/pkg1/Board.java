@@ -23,10 +23,16 @@ public class Board
     private final int WIDTH = 7;
     public static Tile[][] table;
 
+    /**
+     * creates the board the game will be played on
+     * @throws invalidLocationException 
+     */
     public Board() throws invalidLocationException
     {
+        //a 2d array represents the hexagonal tiles
         table = new Tile[WIDTH][HEIGHT];
 
+        //fills the 2d array with new Tiles
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
@@ -35,17 +41,27 @@ public class Board
             }
         }
 
+        /**
+         * traces through the 2d array and initializes each tile with new intersections
+         * and makes sure that each intersection that is shared between tiles 
+         * is actually shared. Same goes with creases
+         */
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
             {
+                //the farthest left column
                 if (i == 0)
                 {
+                    //the top-most position
                     if (j == 0)
                     {
+                        
+                        //initializes new intersections because it is the first tile
                         table[0][0].setInter(new Intersection(0, 0), new Intersection(1, 0), new Intersection(0, 1),
                                 new Intersection(1, 1), new Intersection(0, 2), new Intersection(1, 2));
 
+                        //intializes new creases
                         table[0][0].setCrease(new Crease(table[0][0].get("tL"), table[0][0].get("tR")),
                                 new Crease(table[0][0].get("tL"), table[0][0].get("mL")),
                                 new Crease(table[0][0].get("mL"), table[0][0].get("lR")),
@@ -54,11 +70,20 @@ public class Board
                                 new Crease(table[0][0].get("lL"), table[0][0].get("lR")));
                     }
 
+                    //if any other tile in the first column other than the top-most
                     else
                     {
+                        /**
+                         * initializes new intersections except for those shared
+                         * with the tiles above it, namely tL and tR and lL and lR
+                         */
                         table[0][j].setInter(table[0][j - 1].get("LL"), table[0][j - 1].get("LR"), new Intersection(0, 2 * j + 1),
                                 new Intersection(1, 2 * j + 1), new Intersection(0, 2 * j + 2), new Intersection(1, 2 * j + 2));
 
+                        /**
+                         * initializes new crease except for those shared with 
+                         * the tiles above it, namely t and b
+                         */
                         table[0][j].setCrease(table[0][j - 1].getCrease("b"),
                                 new Crease(table[0][j].get("tL"), table[0][j].get("mL")),
                                 new Crease(table[0][j].get("mL"), table[0][j].get("lL")),
@@ -67,13 +92,20 @@ public class Board
                                 new Crease(table[0][j].get("lL"), table[0][j].get("lR")));
                     }
 
+                    //sets every tile in the left most column to water
                     table[0][j].setType("water");
                 }
 
+                //the second column from the left
                 else if (i == 1)
                 {
                     if (j == 0)
                     {
+                        /**
+                         * makes sure to also share intersections and creases with 
+                         * the tiles that are now to the left 
+                         */
+                        
                         table[1][0].setInter(table[0][0].get("MR"), new Intersection(2, 0), table[0][0].get("LR"),
                                 new Intersection(2, 1), table[0][1].get("MR"), new Intersection(2, 2));
 
@@ -87,6 +119,7 @@ public class Board
                         table[1][0].setType("water");
                     }
 
+                    //not the bottom-most
                     else if (j != 6)
                     {
                         table[1][j].setInter(table[1][j - 1].get("LL"), table[1][j - 1].get("LR"), table[0][j].get("LR"),
@@ -100,6 +133,7 @@ public class Board
                                 new Crease(table[1][j].get("lL"), table[1][j].get("lR")));
                     }
 
+                    //the bottom most
                     else
                     {
                         table[1][6].setInter(table[1][5].get("LL"), table[1][5].get("LR"), table[0][6].get("LR"),

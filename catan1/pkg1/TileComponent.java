@@ -124,6 +124,8 @@ public class TileComponent extends JComponent
                 }
 
                 g2.fill(polygon);
+                
+                g2.setColor(Color.BLACK);
                 g2.draw(polygon);
             }
         }

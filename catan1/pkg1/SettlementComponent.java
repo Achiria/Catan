@@ -17,6 +17,7 @@
  */
 package catan1.pkg1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
@@ -78,6 +79,8 @@ public class SettlementComponent extends JComponent
 
                                 g2.setPaint(Board.table[i][j].get(corners[k]).getType().getOwner().getColor());
                                 g2.fill(polygon);
+                                g2.setPaint(Color.BLACK);
+                                g2.draw(polygon);
                             }
                         }
                     }

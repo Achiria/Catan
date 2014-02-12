@@ -18,8 +18,9 @@
 package catan1.pkg1;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 
 public class Test
 {
@@ -33,19 +34,19 @@ public class Test
         Board thingy = new Board();
 
         JFrame frame = new JFrame();
+
         frame.setSize(2000, 1150);
         frame.setTitle("Catan");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        TileComponent component = new TileComponent();
-
-        JLayeredPane boardLayer = new JLayeredPane();
-        boardLayer.setLayer(component, 0);
-        boardLayer.setVisible(true);
-        frame.add(component);
-
+        JComponent tiles = new PaneDemo();
+        tiles.setOpaque(true);
+        frame.setContentPane(tiles);
+        
+        frame.pack();
         frame.setVisible(true);
-
+        
+        
 //        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
             //print board
@@ -66,9 +67,9 @@ public class Test
             }
 
             SettlementComponent comp = new SettlementComponent();
-            frame.add(comp);
+//            frame.add(comp);
 
-            frame.setVisible(true);
+//            frame.setVisible(true);
         }
     }
 }

@@ -17,8 +17,11 @@
  */
 package catan1.pkg1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import javax.swing.JComponent;
 
 /**
@@ -34,16 +37,24 @@ public class PogComponent extends JComponent
 
         final int WIDTH = 7;
         final int HEIGHT = 7;
-        final int xCenter = 100;
-        final int yCenter = 100;
+        final int xCent = 100;
+        final int yCent = 100;
         final int xDiff = 120;
         final int yDiff = 138;
+        final ArrayList<Integer> pogNumbs = new ArrayList<>();
         
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
             {
-                
+                if (Board.table[i][j].getLand())
+                {
+                    Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j *yDiff), 40, 40);
+                    g2.setColor(Color.WHITE);
+                    g2.fill(pog);
+                    g2.setColor(Color.BLACK);
+                    g2.draw(pog);
+                }
             }
         }
     }

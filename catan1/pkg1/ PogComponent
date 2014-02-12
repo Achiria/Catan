@@ -17,7 +17,6 @@
  */
 package catan1.pkg1;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -40,51 +39,51 @@ public class PogComponent extends JComponent
         final int yCent = 100;
         final int xDiff = 120;
         final int yDiff = 138;
-        final ArrayList<Integer> pogNumbs = new ArrayList<>();
-        Random ran = new Random();
+        final int pogOffset = 20;
+        final int pogDiameter = 40;
+        final int numberOffset = 4;
+        final int oddOffset = 69;
 
-        pogNumbs.addAll(Arrays.asList(2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12));
-        
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
             {
+                //if land and if not desert
                 if (Board.table[i][j].getLand() && Board.table[i][j].getResource() != 5)
                 {
                     if (i % 2 == 0)
                     {
-                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j * yDiff), 40, 40);
+                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - pogOffset + (i * xDiff), yCent - pogOffset + (j * yDiff), pogDiameter, pogDiameter);
                         g2.setColor(Color.WHITE);
                         g2.fill(pog);
                         g2.setColor(Color.BLACK);
                         g2.draw(pog);
 
-                        int temp = ran.nextInt(pogNumbs.size());
-                        Integer toDraw = pogNumbs.get(temp);
+                        Integer toDraw = Board.table[i][j].getNumb();
                         if (toDraw == 6 || toDraw == 8)
                         {
                             g2.setColor(Color.RED);
                         }
-                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5);
-                        pogNumbs.remove(temp);
+                        
+                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - numberOffset, yCent + (j * yDiff) + numberOffset);
                     }
 
                     else
                     {
-                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j * yDiff) + 69, 40, 40);
+                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - pogOffset + (i * xDiff), yCent - pogOffset + (j * yDiff) + oddOffset, pogDiameter, pogDiameter);
                         g2.setColor(Color.WHITE);
                         g2.fill(pog);
                         g2.setColor(Color.BLACK);
                         g2.draw(pog);
 
-                        int temp = ran.nextInt(pogNumbs.size());
-                        Integer toDraw = pogNumbs.get(temp);
+                        Integer toDraw = Board.table[i][j].getNumb();
+                        
                         if (toDraw == 6 || toDraw == 8)
                         {
                             g2.setColor(Color.RED);
                         }
-                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5 + 69);
-                        pogNumbs.remove(temp);
+                        
+                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - numberOffset, yCent + (j * yDiff) + numberOffset + oddOffset);
                     }
                 }
             }

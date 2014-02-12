@@ -18,9 +18,12 @@
 package catan1.pkg1;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.PopupMenu;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 
 public class Test
 {
@@ -29,7 +32,7 @@ public class Test
         Player p1 = new Player("Anthony", Color.BLUE);
         Player p2 = new Player("Donovon", Color.ORANGE);
         Player p3 = new Player("Andrew", Color.RED);
-        Player p4 = new Player("Brian", Color.GREEN);
+        Player p4 = new Player("Brian", Color.WHITE);
 
         Board thingy = new Board();
 
@@ -39,13 +42,21 @@ public class Test
         frame.setTitle("Catan");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JComponent tiles = new PaneDemo();
-        tiles.setOpaque(true);
-        frame.setContentPane(tiles);
+        JLayeredPane pane = new JLayeredPane();
+        pane.setPreferredSize(new Dimension(2000, 1500));
+
+        TileComponent tileComp = new TileComponent();
+        pane.add(tileComp, 0);
+        tileComp.setBounds(0, 0, 2000, 1500);
         
-        frame.pack();
+        frame.setContentPane(pane);
         frame.setVisible(true);
-        
+
+        SettlementComponent settComp = new SettlementComponent();
+        pane.add(settComp, 1);
+        settComp.setBounds(0, 0, 2000, 1500);
+
+        frame.setVisible(true);
         
 //        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
@@ -65,11 +76,6 @@ public class Test
             {
                 System.out.println("FAIL");
             }
-
-            SettlementComponent comp = new SettlementComponent();
-//            frame.add(comp);
-
-//            frame.setVisible(true);
         }
     }
 }

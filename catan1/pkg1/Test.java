@@ -47,12 +47,26 @@ public class Test
         tileComp.setBounds(0, 0, 2000, 1500);
         
         frame.setContentPane(pane);
-        frame.setVisible(true);
-
+        
         SettlementComponent settComp = new SettlementComponent();
-        pane.add(settComp, new Integer(1));
+        pane.add(settComp, new Integer(2));
         settComp.setBounds(0, 0, 2000, 1500);
-
+        
+        PogComponent pogComp = new PogComponent();
+        pane.add(pogComp, new Integer(2));
+        pogComp.setBounds(0, 0, 2000, 1500);
+        
+        RoadComponent roadComp = new RoadComponent();
+        pane.add(roadComp, new Integer(2));
+        roadComp.setBounds(0, 0, 2000, 1500);
+        
+        frame.setVisible(true); 
+        
+        Buttons butt = new Buttons();
+        butt.setOpaque(true);
+        pane.add(butt, new Integer(0));
+        butt.setBounds(0, 0, 2000, 1500);
+       
         frame.setVisible(true);
         
 //        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
@@ -67,6 +81,13 @@ public class Test
                 p1.buildSettlement(2, 2, "ML");
                 p1.buildSettlement(3, 2, "TL");
                 p3.buildSettlement(0, 0, "TL");
+                p1.buildRoad(Board.table[2][2].getCrease("T"));
+                p2.buildRoad(Board.table[3][2].getCrease("T"));
+                p1.buildRoad(Board.table[2][2].getCrease("UL"));
+                p2.buildRoad(Board.table[3][2].getCrease("UL"));
+                p2.buildRoad(Board.table[3][4].getCrease("LL"));
+                p2.buildRoad(Board.table[4][4].getCrease("B"));
+                p2.buildRoad(Board.table[0][4].getCrease("LR"));
             }
 
             catch (invalidLocationException e)

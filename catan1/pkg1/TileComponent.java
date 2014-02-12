@@ -22,13 +22,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
 
 public class TileComponent extends JComponent
 {
-    private Color limeGreen = new Color(173, 255, 47);
-    private Color darkGreen = new Color(34, 139, 34);
-    private Color brickRed = new Color(139, 26, 26);
-    private Color desertTan = new Color(210, 180, 140);
+    private final Color limeGreen = new Color(173, 255, 47);
+    private final Color darkGreen = new Color(34, 139, 34);
+    private final Color brickRed = new Color(139, 26, 26);
+    private final Color desertTan = new Color(210, 180, 140);
+    
+    private final JLayeredPane boardLayer = new JLayeredPane();
     
     @Override
     public void paintComponent(Graphics g)

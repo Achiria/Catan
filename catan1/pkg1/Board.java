@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2014 Anthony
  *
  * This program is free software; you can redistribute it and/or
@@ -25,8 +25,9 @@ public class Board
 {
     private final int HEIGHT = 7;
     private final int WIDTH = 7;
-    ArrayList<Integer> resources = new ArrayList();
-    
+    ArrayList<Integer> resources = new ArrayList<>();
+    ArrayList<Integer> pogNumbs = new ArrayList<>();
+
     public static Tile[][] table;
 
     /**
@@ -433,6 +434,20 @@ public class Board
                     int temp = ran.nextInt(resources.size());
                     table[i][j].setResource(resources.get(temp));
                     resources.remove(temp);
+                }
+            }
+        }
+
+        pogNumbs.addAll(Arrays.asList(2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12));
+        for (int i = 0; i < WIDTH; i++)
+        {
+            for (int j = 0; j < HEIGHT; j++)
+            {
+                if (table[i][j].getLand() && table[i][j].getResource() != 5)
+                {
+                    int temp = ran.nextInt(pogNumbs.size());
+                    table[i][j].setNumb(pogNumbs.get(temp));
+                    pogNumbs.remove(temp);
                 }
             }
         }

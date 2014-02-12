@@ -31,6 +31,10 @@ public class Test
         Player p3 = new Player("Andrew", Color.RED);
         Player p4 = new Player("Brian", Color.WHITE);
 
+        Player playerTurn;
+
+        int turn = 0;
+
         Board thingy = new Board();
 
         JFrame frame = new JFrame();
@@ -45,55 +49,44 @@ public class Test
         TileComponent tileComp = new TileComponent();
         pane.add(tileComp, new Integer(0));
         tileComp.setBounds(0, 0, 2000, 1500);
-        
+
         frame.setContentPane(pane);
-        
+
         SettlementComponent settComp = new SettlementComponent();
         pane.add(settComp, new Integer(2));
         settComp.setBounds(0, 0, 2000, 1500);
-        
+
         PogComponent pogComp = new PogComponent();
         pane.add(pogComp, new Integer(2));
         pogComp.setBounds(0, 0, 2000, 1500);
-        
+
         RoadComponent roadComp = new RoadComponent();
         pane.add(roadComp, new Integer(2));
         roadComp.setBounds(0, 0, 2000, 1500);
-        
-        frame.setVisible(true); 
-        
+
+        frame.setVisible(true);
+
         Buttons butt = new Buttons();
         butt.setOpaque(true);
         pane.add(butt, new Integer(0));
         butt.setBounds(0, 0, 2000, 1500);
-       
-        frame.setVisible(true);
-        
-//        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
-        {
-            //print board
-            //check whose turn
-            try
-            {
-                p1.buildSettlement(2, 2, "MR");
-                p1.buildSettlement(5, 3, "MR");
-                p2.buildSettlement(4, 5, "TR");
-                p1.buildSettlement(2, 2, "ML");
-                p1.buildSettlement(3, 2, "TL");
-                p3.buildSettlement(0, 0, "TL");
-                p1.buildRoad(Board.table[2][2].getCrease("T"));
-                p2.buildRoad(Board.table[3][2].getCrease("T"));
-                p1.buildRoad(Board.table[2][2].getCrease("UL"));
-                p2.buildRoad(Board.table[3][2].getCrease("UL"));
-                p2.buildRoad(Board.table[3][4].getCrease("LL"));
-                p2.buildRoad(Board.table[4][4].getCrease("B"));
-                p2.buildRoad(Board.table[0][4].getCrease("LR"));
-            }
 
-            catch (invalidLocationException e)
+        frame.setVisible(true);
+
+        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
+        {
+            switch (turn % 4)
             {
-                System.out.println("FAIL");
+                case 0:
+                    playerTurn = p1;
+                case 1:
+                    playerTurn = p2;
+                case 2:
+                    playerTurn = p3;
+                case 3:
+                    playerTurn = p4;
             }
+            turn++;
         }
     }
 }

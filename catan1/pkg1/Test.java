@@ -19,9 +19,6 @@ package catan1.pkg1;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.PopupMenu;
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
@@ -46,14 +43,14 @@ public class Test
         pane.setPreferredSize(new Dimension(2000, 1500));
 
         TileComponent tileComp = new TileComponent();
-        pane.add(tileComp, 0);
+        pane.add(tileComp, new Integer(0));
         tileComp.setBounds(0, 0, 2000, 1500);
         
         frame.setContentPane(pane);
         frame.setVisible(true);
 
         SettlementComponent settComp = new SettlementComponent();
-        pane.add(settComp, 1);
+        pane.add(settComp, new Integer(1));
         settComp.setBounds(0, 0, 2000, 1500);
 
         frame.setVisible(true);

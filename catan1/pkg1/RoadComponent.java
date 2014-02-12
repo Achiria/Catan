@@ -35,6 +35,12 @@ public class RoadComponent extends JComponent
         final int WIDTH = 7;
         final int xDiff = 120;
         final int yDiff = 138;
+        final int oddOffset = 69;
+        final int roadHeight = 10;
+        final int roadWidth = 50;
+        final int xOffset = 15;
+        final int yOffset = 5;
+
         final int ULAngle = 60;
         final int LLAngle = -60;
         final int URAngle = -60;
@@ -47,15 +53,15 @@ public class RoadComponent extends JComponent
 
         Graphics2D g2 = (Graphics2D) g;
 
-        //TR, TL, ML, LL, LR, MR
+        //TL, ML, LL, LR, MR, TR
         int[] x =
         {
-            140, 60, 20, 60, 140, 180
+            60, 20, 60, 140, 180, 140
         };
-        //TR, TL, ML, LL, LR, MR
+        //TL, ML, LL, LR, MR, TR
         int[] y =
         {
-            31, 31, 100, 169, 169, 100
+            31, 100, 169, 169, 100, 31
         };
 
         Rectangle toDraw = new Rectangle();
@@ -75,12 +81,12 @@ public class RoadComponent extends JComponent
                             {
                                 if (i % 2 == 0)
                                 {
-                                    toDraw = new Rectangle(x[1] + (i * xDiff) + 15, y[0] + (j * yDiff) - 5, 50, 10);
+                                    toDraw = new Rectangle(x[0] + (i * xDiff) + xOffset, y[0] + (j * yDiff) - yOffset, roadWidth, roadHeight);
                                 }
 
                                 else
                                 {
-                                    toDraw = new Rectangle(x[1] + (i * xDiff) + 15, y[0] + (j * yDiff) - 5 + 69, 50, 10);
+                                    toDraw = new Rectangle(x[0] + (i * xDiff) + xOffset, y[0] + (j * yDiff) - yOffset + oddOffset, roadWidth, roadHeight);
                                 }
 
                                 g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
@@ -94,12 +100,50 @@ public class RoadComponent extends JComponent
                             {
                                 if (i % 2 == 0)
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 10, y[0] + (j * yDiff) - 5, 60, 10);
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + xOffset - 20, y[1] + (j * yDiff) - yOffset - 35, roadWidth, roadHeight);
                                 }
 
                                 else
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 10, y[0] + (j * yDiff) - 5 + 69, 60, 10);
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + xOffset - 20, y[1] + (j * yDiff) - yOffset - 35 + oddOffset, roadWidth, roadHeight);
+                                }
+
+                                g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
+                                g2.fill(toDraw);
+                                g2.setColor(Color.BLACK);
+                                g2.draw(toDraw);
+                            }
+
+                            //lower left
+                            else if (k == 2)
+                            {
+                                if (i % 2 == 0)
+                                {
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + xOffset - 20, y[2] + (j * yDiff) - yOffset - 35, roadWidth, roadHeight);
+                                }
+
+                                else
+                                {
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + xOffset - 20, y[2] + (j * yDiff) - yOffset - 35 + oddOffset, roadWidth, roadHeight);
+                                }
+
+                                g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
+                                g2.fill(toDraw);
+                                g2.setColor(Color.BLACK);
+                                g2.draw(toDraw);
+                            }
+
+                            //bottom crease
+                            else if (k == 3)
+                            {
+                                if (i % 2 == 0)
+                                {
+                                    toDraw = new Rectangle(x[3] + (i * xDiff) + xOffset - 20, y[3] + (j * yDiff) - yOffset - 35, roadWidth, roadHeight);
+                                }
+
+                                else
+                                {
+                                    toDraw = new Rectangle(x[3] + (i * xDiff) + xOffset - 20, y[3] + (j * yDiff) - yOffset - 35 + oddOffset, roadWidth, roadHeight);
                                 }
 
                                 g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());

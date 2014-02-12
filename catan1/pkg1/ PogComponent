@@ -63,7 +63,12 @@ public class PogComponent extends JComponent
                         g2.draw(pog);
 
                         int temp = ran.nextInt(pogNumbs.size());
-                        g2.drawString(pogNumbs.get(temp).toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5);
+                        Integer toDraw = pogNumbs.get(temp);
+                        if (toDraw == 6 || toDraw == 8)
+                        {
+                            g2.setColor(Color.RED);
+                        }
+                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5);
                         pogNumbs.remove(temp);
                     }
 
@@ -74,9 +79,14 @@ public class PogComponent extends JComponent
                         g2.fill(pog);
                         g2.setColor(Color.BLACK);
                         g2.draw(pog);
-                        
+
                         int temp = ran.nextInt(pogNumbs.size());
-                        g2.drawString(pogNumbs.get(temp).toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5 + 69);
+                        Integer toDraw = pogNumbs.get(temp);
+                        if (toDraw == 6 || toDraw == 8)
+                        {
+                            g2.setColor(Color.RED);
+                        }
+                        g2.drawString(toDraw.toString(), xCent + (i * xDiff) - 4, yCent + (j * yDiff) + 5 + 69);
                         pogNumbs.remove(temp);
                     }
                 }

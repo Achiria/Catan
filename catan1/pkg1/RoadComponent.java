@@ -75,13 +75,18 @@ public class RoadComponent extends JComponent
                             {
                                 if (i % 2 == 0)
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 20, y[0] + (j * yDiff) - 10, 40, 20);
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + 15, y[0] + (j * yDiff) - 5, 50, 10);
                                 }
 
                                 else
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 20, y[0] + (j * yDiff) - 10, 40, 20);
+                                    toDraw = new Rectangle(x[1] + (i * xDiff) + 15, y[0] + (j * yDiff) - 5 + 69, 50, 10);
                                 }
+
+                                g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
+                                g2.fill(toDraw);
+                                g2.setColor(Color.BLACK);
+                                g2.draw(toDraw);
                             }
 
                             //if it is upper left crease
@@ -89,18 +94,19 @@ public class RoadComponent extends JComponent
                             {
                                 if (i % 2 == 0)
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 20, y[0] + (j * yDiff) - 10, 40, 20);
+                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 10, y[0] + (j * yDiff) - 5, 60, 10);
                                 }
 
                                 else
                                 {
-                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 20, y[0] + (j * yDiff) - 10, 40, 20);
+                                    toDraw = new Rectangle(x[0] + (i * xDiff) + 10, y[0] + (j * yDiff) - 5 + 69, 60, 10);
                                 }
+
+                                g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
+                                g2.fill(toDraw);
+                                g2.setColor(Color.BLACK);
+                                g2.draw(toDraw);
                             }
-                            g2.setColor(Color.BLACK);
-                            g2.draw(toDraw);
-                            g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
-                            g2.fill(toDraw);
                         }
                     }
 

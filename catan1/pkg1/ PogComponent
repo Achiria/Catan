@@ -22,6 +22,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import javax.swing.JComponent;
 
 /**
@@ -42,18 +44,33 @@ public class PogComponent extends JComponent
         final int xDiff = 120;
         final int yDiff = 138;
         final ArrayList<Integer> pogNumbs = new ArrayList<>();
-        
+
+        pogNumbs.addAll(Arrays.asList(2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12));
+
+        Random ran = new Random();
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
             {
                 if (Board.table[i][j].getLand())
                 {
-                    Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j *yDiff), 40, 40);
-                    g2.setColor(Color.WHITE);
-                    g2.fill(pog);
-                    g2.setColor(Color.BLACK);
-                    g2.draw(pog);
+                    if (i % 2 == 0)
+                    {
+                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j * yDiff), 40, 40);
+                        g2.setColor(Color.WHITE);
+                        g2.fill(pog);
+                        g2.setColor(Color.BLACK);
+                        g2.draw(pog);
+                    }
+
+                    else
+                    {
+                        Ellipse2D.Double pog = new Ellipse2D.Double(xCent - 20 + (i * xDiff), yCent - 20 + (j * yDiff) + 69, 40, 40);
+                        g2.setColor(Color.WHITE);
+                        g2.fill(pog);
+                        g2.setColor(Color.BLACK);
+                        g2.draw(pog);
+                    }
                 }
             }
         }

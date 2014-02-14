@@ -28,8 +28,6 @@ public class Layout extends javax.swing.JFrame
     public Layout()
     {
         initComponents();
-        jLayeredPane1.add(new TileComponent());
-        jLayeredPane1.add(new PogComponent());
     }
 
     /**
@@ -49,7 +47,8 @@ public class Layout extends javax.swing.JFrame
         buttBank = new javax.swing.JButton();
         buttPlayer = new javax.swing.JButton();
         buttEnd = new javax.swing.JButton();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        tileComponent2 = new catan1.pkg1.TileComponent();
+        pogComponent1 = new catan1.pkg1.PogComponent();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Layout");
@@ -117,25 +116,8 @@ public class Layout extends javax.swing.JFrame
             }
         });
 
-        jLayeredPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLayeredPane1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                jLayeredPane1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1478, Short.MAX_VALUE)
-        );
+        tileComponent2.add(pogComponent1);
+        pogComponent1.setBounds(0, 0, 970, 1480);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,8 +125,8 @@ public class Layout extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tileComponent2, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttCity)
                     .addGroup(layout.createSequentialGroup()
@@ -173,7 +155,6 @@ public class Layout extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttRoad)
@@ -186,7 +167,8 @@ public class Layout extends javax.swing.JFrame
                             .addComponent(buttPlayer))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttCity)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 1387, Short.MAX_VALUE))
+                    .addComponent(tileComponent2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -228,12 +210,6 @@ public class Layout extends javax.swing.JFrame
         // TODO add your handling code here:
     }                                       
 
-    private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt)                                           
-    {                                               
-        // TODO add your handling code here:
-        Point loc = evt.getPoint();     
-    }                                          
-
     // Variables declaration - do not modify                     
     private javax.swing.JButton buttBank;
     private javax.swing.JButton buttCity;
@@ -242,6 +218,7 @@ public class Layout extends javax.swing.JFrame
     private javax.swing.JButton buttPlayer;
     private javax.swing.JButton buttRoad;
     private javax.swing.JButton buttSett;
-    private javax.swing.JLayeredPane jLayeredPane1;
+    private catan1.pkg1.PogComponent pogComponent1;
+    private catan1.pkg1.TileComponent tileComponent2;
     // End of variables declaration                   
 }

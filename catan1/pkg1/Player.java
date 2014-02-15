@@ -67,15 +67,16 @@ public class Player
         }
     }
 
-    public void buildCity(Intersection place)
+    public void buildCity(int x, int y, String str) throws invalidLocationException
     {
 //      if (place.isValid)
 //        if (hand[0] >= 2 && hand[4] >= 3 && citiesLeft > 0)
         {
-            place.setOcc(true);
-            place.setType(new City(this));
-            citiesLeft--;
+            Board.table[x][y].get(str).setOcc(true);
+            Board.table[x][y].get(str).setType(new City(this));
             settlementsLeft++;
+            citiesLeft--;
+            points++;
         }
 
     }

@@ -24,21 +24,22 @@ public class Actions
 {
     private static int built;
 
-    public void build(Point p)
+    public void build(Point p) throws invalidLocationException
     {
         switch (built)
         {
             //road
             case 1:
-                
-            //road
-            case 2:
-                
+                Test.playerTurn.buildRoad(getClosestCrease(p));
             //settlement
-            case 3:
-                
+            case 2:
+                Intersection inter = getClosestInter(p);
+                Test.playerTurn.buildSettlement(inter.getX(), inter.getY(), new String());
             //city
-            case 4:
+            case 3:
+                inter = getClosestInter(p);
+                Test.playerTurn.buildCity(inter.getX(), inter.getY(), new String());
+            default:
         }
     }
 
@@ -50,6 +51,16 @@ public class Actions
     public void trade()
     {
         
+    }
+ 
+    public Crease getClosestCrease(Point p)
+    {
+        return null;
+    }
+    
+    public Intersection getClosestInter(Point p)
+    {
+        return null;
     }
 }
 

@@ -51,6 +51,16 @@ public class Intersection
         return type;
     }
     
+    public int getX()
+    {
+        return location.x;
+    }
+    
+    public int getY()
+    {
+        return location.y;
+    }
+    
 //    public boolean isValid()
 //    {
 //        if (occupied == true)

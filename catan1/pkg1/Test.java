@@ -37,6 +37,7 @@ public class Test
 
         while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
+            Actions.setEnd(false);
             if (turn % 4 == 0)
             {
                 playerTurn = p1;
@@ -61,7 +62,10 @@ public class Test
 
             while (Actions.turnEnd() == false)
             {
-
+                if (Actions.turnEnd() == true)
+                {
+                    break;
+                }
             }
 
             gui.checkTable();

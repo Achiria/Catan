@@ -15,20 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package catan1.pkg1;
 
-/**
- *
- * @author Anthony
- */
 public class Crease
 {
     private Intersection start;
     private Intersection end;
     private boolean occupied;
     private Road built;
-    
+
     public Crease()
     {
         start = new Intersection();
@@ -36,20 +31,30 @@ public class Crease
         occupied = false;
         built = null;
     }
-    
+
     public Crease(Intersection s, Intersection e)
     {
         start = s;
         end = e;
     }
-    
+
     public void setOcc(boolean occ)
     {
         occupied = occ;
     }
-    
+
     public void setBuilt(Road toBeBuilt)
     {
         built = toBeBuilt;
+    }
+
+    public Road getRoad()
+    {
+        return built;
+    }
+
+    public boolean getOcc()
+    {
+        return occupied;
     }
 }

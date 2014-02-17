@@ -15,52 +15,61 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package catan1.pkg1;
 
+import java.awt.Component;
 import java.awt.Point;
 
 public class Actions
 {
     private static int built;
 
-    public void build(Point p) throws invalidLocationException
+    final int WIDTH = 7;
+    final int HEIGHT = 7;
+    final int xDiff = 120;
+    final int yDiff = 138;
+
+    public static void build(Tile t, String str) throws invalidLocationException
     {
         switch (built)
         {
             //road
             case 1:
-                Test.playerTurn.buildRoad(getClosestCrease(p));
+//                Test.playerTurn.buildRoad(getClosestCrease(t, str));
             //settlement
             case 2:
-                Intersection inter = getClosestInter(p);
-                Test.playerTurn.buildSettlement(inter.getX(), inter.getY(), new String());
+                Test.playerTurn.buildSettlement(t.getX(), t.getY(), str);
             //city
             case 3:
-                inter = getClosestInter(p);
-                Test.playerTurn.buildCity(inter.getX(), inter.getY(), new String());
+                Test.playerTurn.buildCity(t.getX(), t.getY(), str);
             default:
+
         }
+
+        Component comp2 = new SettlementComponent();
+        Test.gui.lay.addTo(comp2);
+        comp2.setBounds(0, 0, 1500, 1500);
     }
 
     public static void setBuild(int toSet)
     {
         built = toSet;
     }
-    
+
     public void trade()
     {
-        
+
     }
- 
-    public Crease getClosestCrease(Point p)
+
+    public Crease getClosestCrease(Tile t, String str)
     {
         return null;
     }
-    
+
     public Intersection getClosestInter(Point p)
     {
+        double tileX = p.x / xDiff;
+        double tileY = p.y / yDiff;
         return null;
     }
 }
-

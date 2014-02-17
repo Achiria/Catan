@@ -18,12 +18,12 @@
 package catan1.pkg1;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 
 public class Test
 {
+    static Player playerTurn;
+    static DrawTable gui = new DrawTable();
+
     public static void main(String[] args) throws invalidLocationException
     {
         Player p1 = new Player("Anthony", Color.BLUE);
@@ -31,47 +31,9 @@ public class Test
         Player p3 = new Player("Andrew", Color.RED);
         Player p4 = new Player("Brian", Color.WHITE);
 
-        Player playerTurn;
-
         int turn = 0;
 
         Board thingy = new Board();
-
-        JFrame frame = new JFrame();
-
-        frame.setSize(2000, 1150);
-        frame.setTitle("Catan");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JLayeredPane pane = new JLayeredPane();
-        pane.setPreferredSize(new Dimension(2000, 1500));
-
-        TileComponent tileComp = new TileComponent();
-        pane.add(tileComp, new Integer(0));
-        tileComp.setBounds(0, 0, 2000, 1500);
-
-        frame.setContentPane(pane);
-
-        SettlementComponent settComp = new SettlementComponent();
-        pane.add(settComp, new Integer(2));
-        settComp.setBounds(0, 0, 2000, 1500);
-
-        PogComponent pogComp = new PogComponent();
-        pane.add(pogComp, new Integer(2));
-        pogComp.setBounds(0, 0, 2000, 1500);
-
-        RoadComponent roadComp = new RoadComponent();
-        pane.add(roadComp, new Integer(2));
-        roadComp.setBounds(0, 0, 2000, 1500);
-
-        frame.setVisible(true);
-
-        Buttons butt = new Buttons();
-        butt.setOpaque(true);
-        pane.add(butt, new Integer(0));
-        butt.setBounds(0, 0, 2000, 1500);
-
-        frame.setVisible(true);
 
         while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
@@ -86,6 +48,8 @@ public class Test
                 case 3:
                     playerTurn = p4;
             }
+
+            gui.checkTable();
             turn++;
         }
     }

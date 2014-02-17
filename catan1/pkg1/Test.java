@@ -37,20 +37,37 @@ public class Test
 
         while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
         {
-            switch (turn % 4)
+            if (turn % 4 == 0)
             {
-                case 0:
-                    playerTurn = p1;
-                case 1:
-                    playerTurn = p2;
-                case 2:
-                    playerTurn = p3;
-                case 3:
-                    playerTurn = p4;
+                playerTurn = p1;
+            }
+
+            else if (turn % 4 == 1)
+            {
+                playerTurn = p2;
+            }
+
+            else if (turn % 4 == 2)
+            {
+                playerTurn = p3;
+            }
+
+            else
+            {
+                playerTurn = p4;
+            }
+
+            System.out.println(playerTurn.getName() + "'s turn.");
+
+            while (Actions.turnEnd() == false)
+            {
+
             }
 
             gui.checkTable();
             turn++;
+
+            System.out.println("Turn end");
         }
     }
 }

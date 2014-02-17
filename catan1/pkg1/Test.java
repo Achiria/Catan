@@ -18,13 +18,14 @@
 package catan1.pkg1;
 
 import java.awt.Color;
+import java.util.concurrent.TimeUnit;
 
 public class Test
 {
     static Player playerTurn;
     static DrawTable gui = new DrawTable();
 
-    public static void main(String[] args) throws invalidLocationException
+    public static void main(String[] args) throws invalidLocationException, InterruptedException
     {
         Player p1 = new Player("Anthony", Color.BLUE);
         Player p2 = new Player("Donovon", Color.ORANGE);
@@ -62,16 +63,16 @@ public class Test
 
             while (Actions.turnEnd() == false)
             {
+                TimeUnit.MILLISECONDS.sleep(1);
                 if (Actions.turnEnd() == true)
                 {
+                    gui.checkTable();
+                    turn++;
+
+                    System.out.println("Turn end");
                     break;
                 }
             }
-
-            gui.checkTable();
-            turn++;
-
-            System.out.println("Turn end");
         }
     }
 }

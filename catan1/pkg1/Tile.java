@@ -90,26 +90,15 @@ public class Tile
         land = !str.equals("water");
     }
 
-    public void setResource(String str)
+    public void setResource(int toSet)
     {
         //  hay = 0
         //  sheep = 1
         //  wood = 2
         //  brick = 3
         //  ore = 4
-        switch (str)
-        {
-            case "hay":
-                resource = 0;
-            case "sheep":
-                resource = 1;
-            case "wood":
-                resource = 2;
-            case "brick":
-                resource = 3;
-            case "ore":
-                resource = 4;
-        }
+        // desert = 5;
+        resource = toSet;
     }
 
     public void setNumb(int newNumb)
@@ -131,10 +120,15 @@ public class Tile
     {
         return land;
     }
-        
+
     public int getResource()
     {
         return resource;
+    }
+
+    public int getNumb()
+    {
+        return numb;
     }
 
     public Intersection get(String str) throws invalidLocationException

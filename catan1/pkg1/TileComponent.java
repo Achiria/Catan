@@ -22,7 +22,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import javax.swing.JComponent;
-import javax.swing.JLayeredPane;
 
 public class TileComponent extends JComponent
 {
@@ -30,9 +29,7 @@ public class TileComponent extends JComponent
     private final Color darkGreen = new Color(34, 139, 34);
     private final Color brickRed = new Color(139, 26, 26);
     private final Color desertTan = new Color(210, 180, 140);
-    
-    private final JLayeredPane boardLayer = new JLayeredPane();
-    
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -42,7 +39,7 @@ public class TileComponent extends JComponent
         final int HEIGHT = 7;
         final int xDiff = 120;
         final int yDiff = 138;
-        
+
         //TR, TL, ML, LL, LR, MR
         int[] x =
         {
@@ -82,9 +79,9 @@ public class TileComponent extends JComponent
                         polygon.lineTo(x[k] + i * xDiff, y[k] + j * yDiff);
                     }
                 }
-                
+
                 polygon.closePath();
-                
+
                 if (Board.table[i][j].getLand() != true)
                 {
                     g2.setColor(Color.CYAN);
@@ -95,31 +92,31 @@ public class TileComponent extends JComponent
                 {
                     g2.setColor(Color.YELLOW);
                 }
-                
+
                 //if it is sheep
                 else if (Board.table[i][j].getResource() == 1)
                 {
                     g2.setColor(limeGreen);
                 }
-                
+
                 //if it is wood
                 else if (Board.table[i][j].getResource() == 2)
                 {
                     g2.setColor(darkGreen);
                 }
-                
+
                 //if it is brick
                 else if (Board.table[i][j].getResource() == 3)
                 {
                     g2.setColor(brickRed);
                 }
-                
+
                 //if it is ore
                 else if (Board.table[i][j].getResource() == 4)
                 {
                     g2.setColor(Color.DARK_GRAY);
                 }
-                
+
                 //if it is desert
                 else
                 {
@@ -127,7 +124,7 @@ public class TileComponent extends JComponent
                 }
 
                 g2.fill(polygon);
-                
+
                 g2.setColor(Color.BLACK);
                 g2.draw(polygon);
             }

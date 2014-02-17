@@ -21,9 +21,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.geom.GeneralPath;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComponent;
 
 public class RoadComponent extends JComponent
@@ -48,7 +45,7 @@ public class RoadComponent extends JComponent
 
         final String[] creases = new String[]
         {
-            "T", "UL", "LL", "B", "UR", "LR"
+            "T", "UL", "LL"
         };
 
         Graphics2D g2 = (Graphics2D) g;
@@ -132,25 +129,6 @@ public class RoadComponent extends JComponent
                                 g2.setColor(Color.BLACK);
                                 g2.draw(toDraw);
                             }
-
-                            //bottom crease
-                            else if (k == 3)
-                            {
-                                if (i % 2 == 0)
-                                {
-                                    toDraw = new Rectangle(x[3] + (i * xDiff) + xOffset - 20, y[3] + (j * yDiff) - yOffset - 35, roadWidth, roadHeight);
-                                }
-
-                                else
-                                {
-                                    toDraw = new Rectangle(x[3] + (i * xDiff) + xOffset - 20, y[3] + (j * yDiff) - yOffset - 35 + oddOffset, roadWidth, roadHeight);
-                                }
-
-                                g2.setColor(Board.table[i][j].getCrease(creases[k]).getRoad().getOwner().getColor());
-                                g2.fill(toDraw);
-                                g2.setColor(Color.BLACK);
-                                g2.draw(toDraw);
-                            }
                         }
                     }
 
@@ -161,10 +139,5 @@ public class RoadComponent extends JComponent
                 }
             }
         }
-    }
-
-    private double toRadians(int angle)
-    {
-        return angle * (Math.PI / 180);
     }
 }

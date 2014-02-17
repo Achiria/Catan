@@ -17,12 +17,12 @@
  */
 package catan1.pkg1;
 
-import java.awt.Component;
 import java.awt.Point;
 
 public class Actions
 {
     private static int built;
+    private static boolean end = false;
 
     final int WIDTH = 7;
     final int HEIGHT = 7;
@@ -45,10 +45,6 @@ public class Actions
             default:
 
         }
-
-        Component comp2 = new SettlementComponent();
-        Test.gui.lay.addTo(comp2);
-        comp2.setBounds(0, 0, 1500, 1500);
     }
 
     public static void setBuild(int toSet)
@@ -71,5 +67,15 @@ public class Actions
         double tileX = p.x / xDiff;
         double tileY = p.y / yDiff;
         return null;
+    }
+
+    public static void setEnd(boolean newEnd)
+    {
+        end = newEnd;
+    }
+    
+    public static boolean turnEnd()
+    {
+        return end;
     }
 }

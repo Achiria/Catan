@@ -39,6 +39,10 @@ public class Layout extends javax.swing.JFrame
         PogComponent comp2 = new PogComponent();
         jLayeredPane1.add(comp2, 0);
         comp2.setBounds(0, 0, 1500, 1500);
+
+        Component comp3 = new SettlementComponent();
+        jLayeredPane1.add(comp3, 0);
+        comp2.setBounds(0, 0, 1500, 1500);
     }
 
     /**

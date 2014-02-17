@@ -17,8 +17,6 @@
  */
 package catan1.pkg1;
 
-import java.awt.Point;
-
 public class Actions
 {
     private static int built;
@@ -57,23 +55,11 @@ public class Actions
 
     }
 
-    public Crease getClosestCrease(Tile t, String str)
-    {
-        return null;
-    }
-
-    public Intersection getClosestInter(Point p)
-    {
-        double tileX = p.x / xDiff;
-        double tileY = p.y / yDiff;
-        return null;
-    }
-
     public static void setEnd(boolean newEnd)
     {
         end = newEnd;
     }
-    
+
     public static boolean turnEnd()
     {
         return end;

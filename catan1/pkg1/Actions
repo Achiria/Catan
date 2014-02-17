@@ -19,36 +19,7 @@ package catan1.pkg1;
 
 public class Actions
 {
-    private static int built;
     private static boolean end = false;
-
-    final int WIDTH = 7;
-    final int HEIGHT = 7;
-    final int xDiff = 120;
-    final int yDiff = 138;
-
-    public static void build(Tile t, String str) throws invalidLocationException
-    {
-        switch (built)
-        {
-            //road
-            case 1:
-//                Test.playerTurn.buildRoad(getClosestCrease(t, str));
-            //settlement
-            case 2:
-                Test.playerTurn.buildSettlement(t.getX(), t.getY(), str);
-            //city
-            case 3:
-                Test.playerTurn.buildCity(t.getX(), t.getY(), str);
-            default:
-
-        }
-    }
-
-    public static void setBuild(int toSet)
-    {
-        built = toSet;
-    }
 
     public void trade()
     {

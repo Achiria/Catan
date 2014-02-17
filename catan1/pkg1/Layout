@@ -20,8 +20,6 @@ package catan1.pkg1;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Layout extends javax.swing.JFrame
 {
@@ -254,7 +252,7 @@ public class Layout extends javax.swing.JFrame
 
     private void buttEndActionPerformed(java.awt.event.ActionEvent evt)                                        
     {                                            
-        // TODO add your handling code here:
+        Actions.setEnd(true);
     }                                       
 
     private void jLayeredPane1MouseClicked(java.awt.event.MouseEvent evt)                                           
@@ -273,10 +271,4 @@ public class Layout extends javax.swing.JFrame
     private javax.swing.JButton buttSett;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration                   
-
-    public void addTo(Component comp)
-    {
-        jLayeredPane1.add(comp, 1);
-        comp.setBounds(0, 0, 1500, 1500);
-    }
 }

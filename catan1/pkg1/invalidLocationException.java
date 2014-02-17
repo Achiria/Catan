@@ -18,10 +18,6 @@
 
 package catan1.pkg1;
 
-/**
- *
- * @author Anthony Gamboa
- */
 class invalidLocationException extends Exception
 {
 

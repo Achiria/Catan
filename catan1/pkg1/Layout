@@ -41,6 +41,10 @@ public class Layout extends javax.swing.JFrame
         Component comp3 = new SettlementComponent();
         jLayeredPane1.add(comp3, 1);
         comp3.setBounds(0, 0, 1500, 1500);
+
+        Component comp4 = new RoadComponent();
+        jLayeredPane1.add(comp4, 1);
+        comp4.setBounds(0, 0, 1500, 1500);
     }
 
     /**
@@ -209,7 +213,6 @@ public class Layout extends javax.swing.JFrame
     {                                             
         try
         {
-            Actions.setBuild(2);
             Scanner in = new Scanner(System.in);
             System.out.println("Enter two ints and location as string");
             int xPoint = in.nextInt();
@@ -217,8 +220,8 @@ public class Layout extends javax.swing.JFrame
             String inter = in.next();
             Tile t = Board.table[xPoint][yPoint];
             Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
-//            Actions.build(t, inter);
         }
+
         catch (invalidLocationException ex)
         {
             System.out.println("You suck at layout");
@@ -228,12 +231,27 @@ public class Layout extends javax.swing.JFrame
 
     private void buttRoadActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        Actions.setBuild(1);
+        try
+        {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Enter 2 ints and location as string");
+            int xPoint = in.nextInt();
+            int yPoint = in.nextInt();
+            String loc = in.next();
+            Tile t = Board.table[xPoint][yPoint];
+            Crease cre = t.getCrease(loc);
+            Test.playerTurn.buildRoad(cre);
+        }
+
+        catch (invalidLocationException ex)
+        {
+            System.out.println("You suck at layout");
+        }
     }                                        
 
     private void buttCityActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        Actions.setBuild(3);
+
     }                                        
 
     private void buttDevActionPerformed(java.awt.event.ActionEvent evt)                                        

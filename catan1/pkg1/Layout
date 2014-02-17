@@ -39,8 +39,8 @@ public class Layout extends javax.swing.JFrame
         comp2.setBounds(0, 0, 1500, 1500);
 
         Component comp3 = new SettlementComponent();
-        jLayeredPane1.add(comp3, 0);
-        comp2.setBounds(0, 0, 1500, 1500);
+        jLayeredPane1.add(comp3, 1);
+        comp3.setBounds(0, 0, 1500, 1500);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Layout extends javax.swing.JFrame
         buttEnd = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Layout");
         setPreferredSize(new java.awt.Dimension(1600, 1500));
 
@@ -216,7 +216,8 @@ public class Layout extends javax.swing.JFrame
             int yPoint = in.nextInt();
             String inter = in.next();
             Tile t = Board.table[xPoint][yPoint];
-            Actions.build(t, inter);
+            Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
+//            Actions.build(t, inter);
         }
         catch (invalidLocationException ex)
         {

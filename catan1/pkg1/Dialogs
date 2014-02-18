@@ -51,6 +51,6 @@ public class Dialogs
     public static void rolled(int r)
     {
         JOptionPane.showMessageDialog(frame,
-                r + "was the number rolled.");
+                r + " was the number rolled.");
     }
 }

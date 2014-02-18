@@ -49,7 +49,7 @@ public class Layout extends javax.swing.JFrame
         
         Component comp5 = new CityComponent();
         jLayeredPane1.add(comp5, 1);
-        comp4.setBounds(0, 0, 1500, 1500);
+        comp5.setBounds(0, 0, 1500, 1500);
     }
 
     /**

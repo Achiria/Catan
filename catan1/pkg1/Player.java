@@ -72,11 +72,16 @@ public class Player
 //      if (place.isValid)
 //        if (hand[0] >= 2 && hand[4] >= 3 && citiesLeft > 0)
         {
-            Board.table[x][y].get(str).setOcc(true);
-            Board.table[x][y].get(str).setType(new City(this));
-            settlementsLeft++;
-            citiesLeft--;
-            points++;
+            if (Board.table[x][y].get(str).getType() instanceof Settlement)
+            {
+                if (Board.table[x][y].get(str).getType().getOwner() == Test.playerTurn)
+                {
+                    Board.table[x][y].get(str).setType(new City(this));
+                    settlementsLeft++;
+                    citiesLeft--;
+                    points++;
+                }
+            }
         }
 
     }
@@ -95,5 +100,10 @@ public class Player
     public Color getColor()
     {
         return color;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

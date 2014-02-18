@@ -47,4 +47,10 @@ public class Dialogs
                 "Inane error",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void rolled(int r)
+    {
+        JOptionPane.showMessageDialog(frame,
+                r + "was the number rolled.");
+    }
 }

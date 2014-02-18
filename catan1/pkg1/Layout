@@ -259,10 +259,7 @@ public class Layout extends javax.swing.JFrame
 
         else
         {
-            JOptionPane.showMessageDialog(jLayeredPane1,
-                    "Roll first!",
-                    "Inane error",
-                    JOptionPane.ERROR_MESSAGE);
+            Dialogs.rollError();
         }
     }                                        
 

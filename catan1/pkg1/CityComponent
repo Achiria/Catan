@@ -66,17 +66,19 @@ public class CityComponent extends JComponent
                                 GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
 
                                 // TR
-                                polygon.moveTo(x[k] + (i * xDiff) + 10, y[k] + (j * yDiff) - 8);
+                                polygon.moveTo(x[k] + (i * xDiff) + 10, y[k] + (j * yDiff) - 10);
                                 //T
-                                polygon.lineTo(x[k] + (i * xDiff), y[k] + (j * yDiff) - 17);
+                                polygon.lineTo(x[k] + (i * xDiff), y[k] + (j * yDiff) - 19);
                                 //TL
-                                polygon.lineTo(x[k] + (i * xDiff) - 10, y[k] + (j * yDiff) - 8);
+                                polygon.lineTo(x[k] + (i * xDiff) - 10, y[k] + (j * yDiff) - 10);
                                 // LL
-                                polygon.lineTo(x[k] + (i * xDiff) - 10, y[k] + (j * yDiff) + 10);
+                                polygon.lineTo(x[k] + (i * xDiff) - 10, y[k] + (j * yDiff) + 15);
                                 //LR
-                                polygon.lineTo(x[k] + (i * xDiff) + 20, y[k] + (j * yDiff) + 10);
+                                polygon.lineTo(x[k] + (i * xDiff) + 23, y[k] + (j * yDiff) + 15);
                                 //MR
-                                polygon.lineTo(x[k] + (i * xDiff) + 20, y[k] + (j * yDiff) -8);
+                                polygon.lineTo(x[k] + (i * xDiff) + 23, y[k] + (j * yDiff) - 3);
+                                //M
+                                polygon.lineTo(x[k] + (i * xDiff) + 10, y[k] + (j * yDiff) - 3);
                                 //TR
                                 polygon.closePath();
 

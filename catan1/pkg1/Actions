@@ -33,25 +33,38 @@ public class Actions
     {
         end = newEnd;
     }
-    
+
     public static void setRoll(boolean roll)
     {
-        Integer[] rolls = new Integer[]{2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6,
-        7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12};
-        
-        Random ran = new Random();
-        int temp = ran.nextInt(rolls.length);
-        int num = rolls[temp];
-        Dialogs.rolled(num);
-        rolled = roll;
+        if (rolled = false)
+        {
+            Integer[] rolls = new Integer[]
+            {
+                2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6,
+                7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 12
+            };
+
+            Random ran = new Random();
+            int temp = ran.nextInt(rolls.length);
+            int num = rolls[temp];
+            Dialogs.rolled(num);
+            rolled = roll;
+        }
+
+        else
+        {
+            Dialogs.rolledError();
+        }
     }
 
     public static boolean getRolled()
     {
         return rolled;
     }
+
     public static boolean turnEnd()
     {
+        rolled = false;
         return end;
     }
 }

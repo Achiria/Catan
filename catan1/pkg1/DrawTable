@@ -29,6 +29,6 @@ public class DrawTable
     
     public void checkTable()
     {
-
+        lay.repaint();
     }
 }

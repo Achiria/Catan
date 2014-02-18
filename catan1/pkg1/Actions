@@ -19,6 +19,7 @@ package catan1.pkg1;
 
 public class Actions
 {
+    private static boolean rolled;
     private static boolean end = false;
 
     public void trade()
@@ -30,7 +31,16 @@ public class Actions
     {
         end = newEnd;
     }
+    
+    public static void setRoll(boolean roll)
+    {
+        rolled = roll;
+    }
 
+    public static boolean getRolled()
+    {
+        return rolled;
+    }
     public static boolean turnEnd()
     {
         return end;

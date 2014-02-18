@@ -237,7 +237,7 @@ public class Layout extends javax.swing.JFrame
 
     private void buttSettActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        if (Actions.getRolled() == true)
+        if (Actions.getRolled())
         {
             try
             {
@@ -333,7 +333,16 @@ public class Layout extends javax.swing.JFrame
 
     private void buttRollActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        Actions.setRoll(true);
+        if (!Actions.getRolled())
+        {
+            Actions.setRoll(true);
+            Actions.roll();
+        }
+
+        else
+        {
+            Dialogs.rolledError();
+        }
     }                                        
 
     // Variables declaration - do not modify                     

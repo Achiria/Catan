@@ -46,7 +46,7 @@ public class Layout extends javax.swing.JFrame
         Component comp4 = new RoadComponent();
         jLayeredPane1.add(comp4, 1);
         comp4.setBounds(0, 0, 1500, 1500);
-        
+
         Component comp5 = new CityComponent();
         jLayeredPane1.add(comp5, 1);
         comp5.setBounds(0, 0, 1500, 1500);
@@ -247,6 +247,7 @@ public class Layout extends javax.swing.JFrame
             String inter = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
             Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
+            repaint();
         }
 
         catch (invalidLocationException ex)
@@ -268,6 +269,7 @@ public class Layout extends javax.swing.JFrame
             Tile t = Board.table[xPoint][yPoint];
             Crease cre = t.getCrease(loc);
             Test.playerTurn.buildRoad(cre);
+            repaint();
         }
 
         catch (invalidLocationException ex)
@@ -287,6 +289,7 @@ public class Layout extends javax.swing.JFrame
             String inter = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
             Test.playerTurn.buildCity(t.getX(), t.getY(), inter);
+            repaint();
         }
 
         catch (invalidLocationException ex)

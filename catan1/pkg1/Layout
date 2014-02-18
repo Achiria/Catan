@@ -20,6 +20,7 @@ package catan1.pkg1;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Layout extends javax.swing.JFrame
 {
@@ -65,6 +66,8 @@ public class Layout extends javax.swing.JFrame
         buttPlayer = new javax.swing.JButton();
         buttEnd = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Layout");
@@ -153,6 +156,17 @@ public class Layout extends javax.swing.JFrame
             .addGap(0, 1478, Short.MAX_VALUE)
         );
 
+        jButton1.setText("Play Development Card");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Roll");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,27 +176,34 @@ public class Layout extends javax.swing.JFrame
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttCity)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttSett)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttRoad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttDev)))
+                        .addGap(2, 2, 2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttRoad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttDev))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttPlayer)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttBank)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttEnd)))))
-                .addGap(913, 913, 913))
+                            .addComponent(buttCity)
+                            .addComponent(buttSett))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttPlayer)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttBank)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttEnd)))
+                .addGap(911, 911, 911))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttCity, buttRoad, buttSett});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttBank, buttPlayer});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttDev, jButton1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,11 +216,13 @@ public class Layout extends javax.swing.JFrame
                             .addComponent(buttRoad)
                             .addComponent(buttDev)
                             .addComponent(buttBank)
-                            .addComponent(buttEnd))
+                            .addComponent(buttEnd)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttSett)
-                            .addComponent(buttPlayer))
+                            .addComponent(buttPlayer)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttCity)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -213,11 +236,11 @@ public class Layout extends javax.swing.JFrame
     {                                             
         try
         {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter two ints and location as string");
-            int xPoint = in.nextInt();
-            int yPoint = in.nextInt();
-            String inter = in.next();
+            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+            input = input.trim();
+            int xPoint = Integer.parseInt(input.substring(0, 1));
+            int yPoint = Integer.parseInt(input.substring(2, 3));
+            String inter = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
             Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
         }
@@ -251,6 +274,21 @@ public class Layout extends javax.swing.JFrame
 
     private void buttCityActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
+        try
+        {
+            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+            input = input.trim();
+            int xPoint = Integer.parseInt(input.substring(0, 1));
+            int yPoint = Integer.parseInt(input.substring(2, 3));
+            String inter = input.substring(4, input.length());
+            Tile t = Board.table[xPoint][yPoint];
+            Test.playerTurn.buildCity(t.getX(), t.getY(), inter);
+        }
+
+        catch (invalidLocationException ex)
+        {
+            System.out.println("You suck at layout");
+        }
 
     }                                        
 
@@ -280,6 +318,11 @@ public class Layout extends javax.swing.JFrame
         Point loc = evt.getPoint();
     }                                          
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)                                         
+    {                                             
+        // TODO add your handling code here:
+    }                                        
+
     // Variables declaration - do not modify                     
     private javax.swing.JButton buttBank;
     private javax.swing.JButton buttCity;
@@ -288,6 +331,8 @@ public class Layout extends javax.swing.JFrame
     private javax.swing.JButton buttPlayer;
     private javax.swing.JButton buttRoad;
     private javax.swing.JButton buttSett;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration                   
 }

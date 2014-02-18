@@ -53,4 +53,12 @@ public class Dialogs
         JOptionPane.showMessageDialog(frame,
                 r + " was the number rolled.");
     }
+
+    public static void rolledError()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "You have already rolled!",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
 }

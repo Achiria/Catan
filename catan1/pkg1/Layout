@@ -18,7 +18,6 @@
 package catan1.pkg1;
 
 import java.awt.Component;
-import java.awt.Point;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -238,23 +237,33 @@ public class Layout extends javax.swing.JFrame
 
     private void buttSettActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        try
+        if (Actions.getRolled() == true)
         {
-            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
-            input = input.trim();
-            int xPoint = Integer.parseInt(input.substring(0, 1));
-            int yPoint = Integer.parseInt(input.substring(2, 3));
-            String inter = input.substring(4, input.length());
-            Tile t = Board.table[xPoint][yPoint];
-            Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
-            repaint();
+            try
+            {
+                String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+                input = input.trim();
+                int xPoint = Integer.parseInt(input.substring(0, 1));
+                int yPoint = Integer.parseInt(input.substring(2, 3));
+                String inter = input.substring(4, input.length());
+                Tile t = Board.table[xPoint][yPoint];
+                Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
+                repaint();
+            }
+
+            catch (invalidLocationException ex)
+            {
+                System.out.println("You suck at layout");
+            }
         }
 
-        catch (invalidLocationException ex)
+        else
         {
-            System.out.println("You suck at layout");
+            JOptionPane.showMessageDialog(jLayeredPane1,
+                    "Roll first!",
+                    "Inane error",
+                    JOptionPane.ERROR_MESSAGE);
         }
-
     }                                        
 
     private void buttRoadActionPerformed(java.awt.event.ActionEvent evt)                                         
@@ -262,10 +271,11 @@ public class Layout extends javax.swing.JFrame
         try
         {
             Scanner in = new Scanner(System.in);
-            System.out.println("Enter 2 ints and location as string");
-            int xPoint = in.nextInt();
-            int yPoint = in.nextInt();
-            String loc = in.next();
+            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+            input = input.trim();
+            int xPoint = Integer.parseInt(input.substring(0, 1));
+            int yPoint = Integer.parseInt(input.substring(2, 3));
+            String loc = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
             Crease cre = t.getCrease(loc);
             Test.playerTurn.buildRoad(cre);
@@ -326,7 +336,7 @@ public class Layout extends javax.swing.JFrame
 
     private void buttRollActionPerformed(java.awt.event.ActionEvent evt)                                         
     {                                             
-        // TODO add your handling code here:
+        Actions.setRoll(true);
     }                                        
 
     // Variables declaration - do not modify                     

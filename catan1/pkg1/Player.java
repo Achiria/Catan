@@ -18,9 +18,13 @@
 package catan1.pkg1;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Player
 {
+    private JFrame frame;
+    
     private String name;
     private Color color;
     private short points;
@@ -81,6 +85,22 @@ public class Player
                     citiesLeft--;
                     points++;
                 }
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(frame,
+                        "That is not your settlement!",
+                        "Inane error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            else
+            {
+                JOptionPane.showMessageDialog(frame,
+                        "You do not have a settlement there!",
+                        "Inane error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
 

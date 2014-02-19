@@ -19,7 +19,7 @@ package catan1.pkg1;
 
 public class Turn
 {
-    private static int turn = 1;
+    private static int turn = 0;
     private static Player CurrentPlayer;
 
     public static void turnEnded()

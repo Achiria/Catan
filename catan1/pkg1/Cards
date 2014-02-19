@@ -17,10 +17,6 @@
  */
 package catan1.pkg1;
 
-/**
- *
- * @author Anthony Gamboa
- */
 public class Cards
 {
     public static void addCards()
@@ -123,6 +119,7 @@ public class Cards
                         }
                     }
                 }
+                
                 catch (invalidLocationException ex)
                 {
                     System.out.println("FAIL in settlementComponent");

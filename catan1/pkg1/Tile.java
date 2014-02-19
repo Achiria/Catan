@@ -175,4 +175,9 @@ public class Tile
 
         }
     }
+
+    public boolean isShutdown()
+    {
+        return robber;
+    }
 }

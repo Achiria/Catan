@@ -18,13 +18,9 @@
 package catan1.pkg1;
 
 import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Player
 {
-    private JFrame frame;
-    
     private String name;
     private Color color;
     private short points;
@@ -50,7 +46,6 @@ public class Player
         {
             hand[i] = 0;
         }
-
     }
 
     public short getPoints()
@@ -58,6 +53,11 @@ public class Player
         return points;
     }
 
+    public void addHand(int card, int amount)
+    {
+        hand[card] = amount;
+    }
+    
     public void buildSettlement(int x, int y, String str) throws invalidLocationException
     {
 //      if (place.isValid)
@@ -85,22 +85,18 @@ public class Player
                     citiesLeft--;
                     points++;
                 }
-                
+
+                //might be moved to isValid method if ever made
                 else
                 {
-                    JOptionPane.showMessageDialog(frame,
-                        "That is not your settlement!",
-                        "Inane error",
-                        JOptionPane.ERROR_MESSAGE);
+                    Dialogs.settErrorOwn();
                 }
             }
 
+            //might be moved to isValid method
             else
             {
-                JOptionPane.showMessageDialog(frame,
-                        "You do not have a settlement there!",
-                        "Inane error",
-                        JOptionPane.ERROR_MESSAGE);
+                Dialogs.settErrorLoc();
             }
         }
 

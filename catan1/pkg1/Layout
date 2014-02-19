@@ -247,7 +247,7 @@ public class Layout extends javax.swing.JFrame
                 int yPoint = Integer.parseInt(input.substring(2, 3));
                 String inter = input.substring(4, input.length());
                 Tile t = Board.table[xPoint][yPoint];
-                Test.playerTurn.buildSettlement(t.getX(), t.getY(), inter);
+                Turn.getPlayer().buildSettlement(t.getX(), t.getY(), inter);
                 repaint();
             }
 
@@ -275,7 +275,7 @@ public class Layout extends javax.swing.JFrame
             String loc = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
             Crease cre = t.getCrease(loc);
-            Test.playerTurn.buildRoad(cre);
+            Turn.getPlayer().buildRoad(cre);
             repaint();
         }
 
@@ -295,7 +295,7 @@ public class Layout extends javax.swing.JFrame
             int yPoint = Integer.parseInt(input.substring(2, 3));
             String inter = input.substring(4, input.length());
             Tile t = Board.table[xPoint][yPoint];
-            Test.playerTurn.buildCity(t.getX(), t.getY(), inter);
+            Turn.getPlayer().buildCity(t.getX(), t.getY(), inter);
             repaint();
         }
 
@@ -323,7 +323,15 @@ public class Layout extends javax.swing.JFrame
 
     private void buttEndActionPerformed(java.awt.event.ActionEvent evt)                                        
     {                                            
-        Actions.setEnd(true);
+        if (Actions.getRolled())
+        {
+            Actions.setEnd(true);
+        }
+
+        else 
+        {
+            Dialogs.rollError();
+        }
     }                                       
 
     private void buttPlayDevActionPerformed(java.awt.event.ActionEvent evt)                                            

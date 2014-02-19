@@ -46,7 +46,6 @@ public class Test
                 && p3.getPoints() < 10
                 && p4.getPoints() < 10)
         {
-            playerTurn = Turn.getPlayer();
             Actions.setEnd(false);
 
             while (Actions.turnEnd() == false)
@@ -61,5 +60,25 @@ public class Test
                 }
             }
         }
+        
+        if (p1.getPoints() >= 10)
+        {
+            Dialogs.gameOver(p1);
+        }
+        
+        else if (p2.getPoints() >= 10)
+        {
+            Dialogs.gameOver(p2);
+        }
+        
+        else if (p3.getPoints() >= 10)
+        {
+            Dialogs.gameOver(p3);
+        }
+        
+        else if (p4.getPoints() >= 10)
+        {
+            Dialogs.gameOver(p4);
+        }                
     }
 }

@@ -289,8 +289,8 @@ public class Board
 
                     else if (j != 6)
                     {
-                        table[4][j].setInter(table[4][j - 1].get("LL"), table[4][j - 1].get("LR"), table[3][j].get("MR"),
-                                new Intersection(5, 2 * j + 1), table[3][j].get("LR"), new Intersection(5, 2 * j + 2));
+                        table[4][j].setInter(table[4][j - 1].get("LL"), table[4][j - 1].get("LR"), table[3][j].get("TR"),
+                                new Intersection(5, 2 * j + 1), table[3][j].get("MR"), new Intersection(5, 2 * j + 2));
 
                         table[4][j].setCrease(table[4][j - 1].getCrease("b"),
                                 table[3][j - 1].getCrease("lR"),

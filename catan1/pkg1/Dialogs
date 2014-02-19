@@ -67,4 +67,34 @@ public class Dialogs
         JOptionPane.showMessageDialog(frame,
                 current.getName() + "'s turn.");
     }
+
+    public static void noSett()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "You don't have enough settlements!",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void noCity()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "You don't have enough cities!",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void noRoads()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "You don't have enough roads!",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void gameOver(Player p)
+    {
+        JOptionPane.showMessageDialog(frame,
+                p.getName() + "wins the game!");
+    }
 }

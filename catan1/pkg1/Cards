@@ -44,14 +44,12 @@ public class Cards
             {
                 try
                 {
-                    for (int k = 0; k < corners.length; k++)
+                    for (String corner : corners)
                     {
-                        if (Board.table[i][j].get(corners[k]).getType() instanceof Building)
+                        if (Board.table[i][j].get(corner).getType() instanceof Building)
                         {
-                            Building set = Board.table[i][j].get(corners[k]).getType();
-
+                            Building set = Board.table[i][j].get(corner).getType();
                             int toAdd;
-
                             if (set instanceof Settlement)
                             {
                                 toAdd = 1;
@@ -61,13 +59,11 @@ public class Cards
                             {
                                 toAdd = 2;
                             }
-
                             if (Board.table[i][j].getNumb() == Actions.getNumRolled())
                             {
                                 set.getOwner().addHand(Board.table[i][j].getResource(), toAdd);
                             }
-
-                            switch (corners[k])
+                            switch (corner)
                             {
                                 case "TR":
                                     if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j - 1].isShutdown())

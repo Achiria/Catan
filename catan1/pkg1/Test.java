@@ -25,41 +25,29 @@ public class Test
     static Player playerTurn;
     static DrawTable gui = new DrawTable();
 
+    static Player p1;
+    static Player p2;
+    static Player p3;
+    static Player p4;
+
     public static void main(String[] args) throws invalidLocationException, InterruptedException
     {
-        Player p1 = new Player("Anthony", Color.BLUE);
-        Player p2 = new Player("Donovon", Color.ORANGE);
-        Player p3 = new Player("Andrew", Color.RED);
-        Player p4 = new Player("Brian", Color.WHITE);
-
-        int turn = 0;
+        p1 = new Player("Anthony", Color.BLUE);
+        p2 = new Player("Donovon", Color.ORANGE);
+        p3 = new Player("Andrew", Color.RED);
+        p4 = new Player("Brian", Color.WHITE);
 
         Board thingy = new Board();
 
-        while (p1.getPoints() < 10 && p2.getPoints() < 10 && p3.getPoints() < 10 && p4.getPoints() < 10)
+        Dialogs.turnChange(p1);
+        
+        while (p1.getPoints() < 10
+                && p2.getPoints() < 10
+                && p3.getPoints() < 10
+                && p4.getPoints() < 10)
         {
+            playerTurn = Turn.getPlayer();
             Actions.setEnd(false);
-            if (turn % 4 == 0)
-            {
-                playerTurn = p1;
-            }
-
-            else if (turn % 4 == 1)
-            {
-                playerTurn = p2;
-            }
-
-            else if (turn % 4 == 2)
-            {
-                playerTurn = p3;
-            }
-
-            else
-            {
-                playerTurn = p4;
-            }
-
-            System.out.println(playerTurn.getName() + "'s turn.");
 
             while (Actions.turnEnd() == false)
             {
@@ -67,9 +55,8 @@ public class Test
                 if (Actions.turnEnd() == true)
                 {
                     gui.checkTable();
-                    turn++;
+                    Turn.turnEnded();
 
-                    System.out.println("Turn end");
                     break;
                 }
             }

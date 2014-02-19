@@ -40,7 +40,7 @@ public class Actions
     {
         rolled = roll;
     }
-    
+
     public static void roll()
     {
         Integer[] rolls = new Integer[]
@@ -53,6 +53,7 @@ public class Actions
         int temp = ran.nextInt(rolls.length);
         numRolled = rolls[temp];
         Dialogs.rolled(numRolled);
+        Cards.addCards();
     }
 
     public static boolean getRolled()
@@ -64,7 +65,7 @@ public class Actions
     {
         return end;
     }
-    
+
     public static int getNumRolled()
     {
         return numRolled;

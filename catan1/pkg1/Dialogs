@@ -61,4 +61,10 @@ public class Dialogs
                 "Inane error",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void turnChange(Player current)
+    {
+        JOptionPane.showMessageDialog(frame,
+                current.getName() + "'s turn.");
+    }
 }

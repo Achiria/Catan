@@ -23,6 +23,7 @@ public class Actions
 {
     private static boolean rolled = false;
     private static boolean end = false;
+    private static int numRolled;
 
     public void trade()
     {
@@ -50,8 +51,8 @@ public class Actions
 
         Random ran = new Random();
         int temp = ran.nextInt(rolls.length);
-        int num = rolls[temp];
-        Dialogs.rolled(num);
+        numRolled = rolls[temp];
+        Dialogs.rolled(numRolled);
     }
 
     public static boolean getRolled()
@@ -62,5 +63,10 @@ public class Actions
     public static boolean turnEnd()
     {
         return end;
+    }
+    
+    public static int getNumRolled()
+    {
+        return numRolled;
     }
 }

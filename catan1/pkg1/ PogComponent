@@ -61,7 +61,7 @@ public class PogComponent extends JComponent
                         {
                             g2.setColor(Color.RED);
                         }
-                        
+
                         g2.drawString(toDraw.toString(), xCent + (i * xDiff) - numberOffset, yCent + (j * yDiff) + numberOffset);
                     }
 
@@ -74,12 +74,12 @@ public class PogComponent extends JComponent
                         g2.draw(pog);
 
                         Integer toDraw = Board.table[i][j].getNumb();
-                        
+
                         if (toDraw == 6 || toDraw == 8)
                         {
                             g2.setColor(Color.RED);
                         }
-                        
+
                         g2.drawString(toDraw.toString(), xCent + (i * xDiff) - numberOffset, yCent + (j * yDiff) + numberOffset + oddOffset);
                     }
                 }

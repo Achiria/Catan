@@ -40,7 +40,7 @@ public class Test
         Board thingy = new Board();
 
         Dialogs.turnChange(p1);
-        
+
         while (p1.getPoints() < 10
                 && p2.getPoints() < 10
                 && p3.getPoints() < 10
@@ -60,25 +60,25 @@ public class Test
                 }
             }
         }
-        
+
         if (p1.getPoints() >= 10)
         {
             Dialogs.gameOver(p1);
         }
-        
+
         else if (p2.getPoints() >= 10)
         {
             Dialogs.gameOver(p2);
         }
-        
+
         else if (p3.getPoints() >= 10)
         {
             Dialogs.gameOver(p3);
         }
-        
+
         else if (p4.getPoints() >= 10)
         {
             Dialogs.gameOver(p4);
-        }                
+        }
     }
 }

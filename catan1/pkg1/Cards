@@ -70,56 +70,56 @@ public class Cards
                             switch (corners[k])
                             {
                                 case "TR":
-                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j - 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i][j - 1].getResource(), 2);
                                     }
-                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i + 1][j].getResource(), 2);
                                     }
                                 case "TL":
-                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j - 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i][j - 1].getResource(), 2);
                                     }
-                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i - 1][j].getResource(), 2);
                                     }
                                 case "ML":
-                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i - 1][j].getResource(), 2);
                                     }
-                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i - 1][j + 1].getResource(), 2);
                                     }
                                 case "LL":
-                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i - 1][j + 1].getResource(), 2);
                                     }
-                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i][j + 1].getResource(), 2);
                                     }
                                 case "LR":
-                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i][j + 1].getResource(), 2);
                                     }
-                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i + 1][j + 1].getResource(), 2);
                                     }
                                 case "MR":
-                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i + 1][j].getResource(), 2);
                                     }
-                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled())
+                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j + 1].isShutdown())
                                     {
                                         set.getOwner().addHand(Board.table[i + 1][j + 1].getResource(), 2);
                                     }

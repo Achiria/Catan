@@ -15,7 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package catan1.pkg1;
 
 public class Set
@@ -26,7 +25,7 @@ public class Set
     public Set()
     {
     }
-    
+
     public Set(int a, int b)
     {
         x = a;
@@ -42,18 +41,18 @@ public class Set
     {
         return y;
     }
-    
+
     public void set(int newX, int newY)
     {
         x = newX;
         y = newY;
     }
-    
+
     public void setX(int newX)
     {
         x = newX;
     }
-    
+
     public void setY(int newY)
     {
         y = newY;

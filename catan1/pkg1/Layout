@@ -49,7 +49,7 @@ public class Layout extends javax.swing.JFrame
         Component comp5 = new CityComponent();
         jLayeredPane1.add(comp5, 1);
         comp5.setBounds(0, 0, 1500, 1500);
-        
+
         Component comp6 = new HandComponent();
         handPanel.add(comp6, 0);
         comp6.setBounds(0, 0, 750, 750);
@@ -264,7 +264,7 @@ public class Layout extends javax.swing.JFrame
         {
             try
             {
-                String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+                String input = Dialogs.buildPlace();
                 input = input.trim();
                 int xPoint = Integer.parseInt(input.substring(0, 1));
                 int yPoint = Integer.parseInt(input.substring(2, 3));
@@ -291,7 +291,7 @@ public class Layout extends javax.swing.JFrame
         try
         {
             Scanner in = new Scanner(System.in);
-            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
+            String input = Dialogs.buildPlace();
             input = input.trim();
             int xPoint = Integer.parseInt(input.substring(0, 1));
             int yPoint = Integer.parseInt(input.substring(2, 3));
@@ -312,8 +312,7 @@ public class Layout extends javax.swing.JFrame
     {                                             
         try
         {
-            String input = JOptionPane.showInputDialog(this, "Enter two ints and location as string:");
-            input = input.trim();
+            String input = Dialogs.buildPlace();
             int xPoint = Integer.parseInt(input.substring(0, 1));
             int yPoint = Integer.parseInt(input.substring(2, 3));
             String inter = input.substring(4, input.length());
@@ -351,7 +350,7 @@ public class Layout extends javax.swing.JFrame
             Actions.setEnd(true);
         }
 
-        else 
+        else
         {
             Dialogs.rollError();
         }
@@ -368,6 +367,7 @@ public class Layout extends javax.swing.JFrame
         {
             Actions.setRoll(true);
             Actions.roll();
+            repaint();
         }
 
         else
@@ -375,7 +375,7 @@ public class Layout extends javax.swing.JFrame
             Dialogs.rolledError();
         }
     }                                        
-
+   
     // Variables declaration - do not modify                     
     private javax.swing.JButton buttBank;
     private javax.swing.JButton buttCity;

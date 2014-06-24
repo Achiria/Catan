@@ -55,41 +55,69 @@ public class Player
 
     public void addHand(int card, int amount)
     {
-        hand[card] = amount;
+        hand[card] = hand[card] + amount;
     }
-    
+
     public void buildSettlement(int x, int y, String str) throws invalidLocationException
     {
 //      if (place.isValid)
 
-//        if (hand[0] >= 1 && hand[1] >= 1 && hand[2] >= 2 && hand[3] >= 1 && settlementsLeft > 0)
+        //if you have enough cards
+        if (hand[0] >= 1 && hand[1] >= 1 && hand[2] >= 2 && hand[3] >= 1)
         {
-            Board.table[x][y].get(str).setOcc(true);
-            Board.table[x][y].get(str).setType(new Settlement(this));
-            settlementsLeft--;
-            points++;
+            //if you have enough settlements
+            if (settlementsLeft > 0)
+            {
+                {
+                    Board.table[x][y].get(str).setOcc(true);
+                    Board.table[x][y].get(str).setType(new Settlement(this));
+                    settlementsLeft--;
+                    points++;
+                }
+            }
+
+            else
+            {
+                Dialogs.noSett();
+            }
+        }
+
+        else
+        {
+            Dialogs.cardsError();
         }
     }
 
     public void buildCity(int x, int y, String str) throws invalidLocationException
     {
 //      if (place.isValid)
-//        if (hand[0] >= 2 && hand[4] >= 3 && citiesLeft > 0)
+
+        //if you have enough cards
+        if (hand[0] >= 2 && hand[4] >= 3)
         {
             if (Board.table[x][y].get(str).getType() instanceof Settlement)
             {
-                if (Board.table[x][y].get(str).getType().getOwner() == Test.playerTurn)
+                // if you have cities left to build
+                if (citiesLeft > 0)
                 {
-                    Board.table[x][y].get(str).setType(new City(this));
-                    settlementsLeft++;
-                    citiesLeft--;
-                    points++;
-                }
+                    if (Board.table[x][y].get(str).getType().getOwner() == Turn.getPlayer())
+                    {
+                        Board.table[x][y].get(str).setType(new City(this));
+                        settlementsLeft++;
+                        citiesLeft--;
+                        points++;
+                    }
 
-                //might be moved to isValid method if ever made
+                    //might be moved to isValid method if ever made
+                    else
+                    {
+                        Dialogs.settErrorOwn();
+                    }
+                }
+                
                 else
                 {
-                    Dialogs.settErrorOwn();
+                    Dialogs.noCity();
                 }
             }
 
@@ -98,6 +126,11 @@ public class Player
             {
                 Dialogs.settErrorLoc();
             }
+        }
+
+        else
+        {
+            Dialogs.cardsError();
         }
 
     }

@@ -19,14 +19,14 @@ package catan1.pkg1;
 
 public class DrawTable
 {
-    Layout lay = new Layout();
+    static Layout lay = new Layout();
 
     public DrawTable()
     {
         lay.setVisible(true);
     }
 
-    public void checkTable()
+    public static void checkTable()
     {
         lay.repaint();
     }

@@ -24,6 +24,32 @@ public class Dialogs
 {
     private static JFrame frame;
 
+    public static void positionRoll()
+    {
+        JOptionPane.showMessageDialog(frame, "Roll to see who goes first.");
+    }
+
+    public static void tellRoll(Player player)
+    {
+        JOptionPane.showMessageDialog(frame, player.getName() + ", roll now.");
+    }
+
+    public static void firstRoll(Player player)
+    {
+        JOptionPane.showMessageDialog(frame, player.getName() + " goes first.");
+    }
+
+    public static void firstPlaces(Player player, String build)
+    {
+        JOptionPane.showMessageDialog(frame, player.getName() + ", place a " + build);
+    }
+    
+    public static String buildPlace()
+    {
+        String input = JOptionPane.showInputDialog(frame, "Enter two ints and location as string:");
+        return input;
+    }
+
     public static void settErrorLoc()
     {
         JOptionPane.showMessageDialog(frame,
@@ -88,6 +114,14 @@ public class Dialogs
     {
         JOptionPane.showMessageDialog(frame,
                 "You don't have enough roads!",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void cardsError()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "You do not have enough cards!",
                 "Inane error",
                 JOptionPane.ERROR_MESSAGE);
     }

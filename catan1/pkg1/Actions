@@ -41,7 +41,7 @@ public class Actions
         rolled = roll;
     }
 
-    public static void roll()
+    public static int roll()
     {
         Integer[] rolls = new Integer[]
         {
@@ -54,6 +54,7 @@ public class Actions
         numRolled = rolls[temp];
         Dialogs.rolled(numRolled);
         Cards.addCards();
+        return temp;
     }
 
     public static boolean getRolled()

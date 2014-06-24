@@ -25,7 +25,7 @@ public class Cards
         final int HEIGHT = 7;
         String[] corners =
         {
-            "TR", "TL", "ML", "LL", "LR", "MR"
+            "TL", "TR", "ML", "MR", "LL", "LR"
         };
 
         //  hay = 0
@@ -40,86 +40,35 @@ public class Cards
             {
                 try
                 {
-                    for (String corner : corners)
+                    //if the tile number is the same as the number rolled and the tile is not shut down
+                    if (Board.table[i][j].getNumb() == Actions.getNumRolled() && !Board.table[i][j].isShutdown())
                     {
-                        if (Board.table[i][j].get(corner).getType() instanceof Building)
+                        //go through all the corners of that tile
+                        for (String corner : corners)
                         {
-                            Building set = Board.table[i][j].get(corner).getType();
-                            int toAdd;
-                            if (set instanceof Settlement)
+                            //if there is a building on a corner
+                            if (Board.table[i][j].get(corner).getType() instanceof Settlement || Board.table[i][j].get(corner).getType() instanceof City)
                             {
-                                toAdd = 1;
-                            }
+                                //set = the building
+                                Building set = Board.table[i][j].get(corner).getType();
+                                int toAdd;
+                                if (set instanceof Settlement)
+                                {
+                                    toAdd = 1;
+                                }
 
-                            else
-                            {
-                                toAdd = 2;
-                            }
-                            if (Board.table[i][j].getNumb() == Actions.getNumRolled())
-                            {
+                                else
+                                {
+                                    toAdd = 2;
+                                }
+
+                                //add the resource of the tile to the owner's hand
                                 set.getOwner().addHand(Board.table[i][j].getResource(), toAdd);
-                            }
-                            switch (corner)
-                            {
-                                case "TR":
-                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j - 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i][j - 1].getResource(), 2);
-                                    }
-                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i + 1][j].getResource(), 2);
-                                    }
-                                case "TL":
-                                    if (Board.table[i][j - 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j - 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i][j - 1].getResource(), 2);
-                                    }
-                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i - 1][j].getResource(), 2);
-                                    }
-                                case "ML":
-                                    if (Board.table[i - 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i - 1][j].getResource(), 2);
-                                    }
-                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i - 1][j + 1].getResource(), 2);
-                                    }
-                                case "LL":
-                                    if (Board.table[i - 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i - 1][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i - 1][j + 1].getResource(), 2);
-                                    }
-                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i][j + 1].getResource(), 2);
-                                    }
-                                case "LR":
-                                    if (Board.table[i][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i][j + 1].getResource(), 2);
-                                    }
-                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i + 1][j + 1].getResource(), 2);
-                                    }
-                                case "MR":
-                                    if (Board.table[i + 1][j].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i + 1][j].getResource(), 2);
-                                    }
-                                    if (Board.table[i + 1][j + 1].getNumb() == Actions.getNumRolled() && !Board.table[i + 1][j + 1].isShutdown())
-                                    {
-                                        set.getOwner().addHand(Board.table[i + 1][j + 1].getResource(), 2);
-                                    }
                             }
                         }
                     }
                 }
-                
+
                 catch (invalidLocationException ex)
                 {
                     System.out.println("FAIL in settlementComponent");

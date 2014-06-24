@@ -22,10 +22,15 @@ public class Turn
     private static int turn = 0;
     private static Player CurrentPlayer;
 
+    public static void turnSet(int num)
+    {
+        turn = num;
+    }
+    
     public static void turnEnded()
     {
-        Dialogs.turnChange(getPlayer());
         turn++;
+        Dialogs.turnChange(getPlayer());       
     }
 
     public static Player getPlayer()

@@ -17,59 +17,100 @@
  */
 package catan.pkg1;
 
-public class Intersection
-{
+public class Intersection {
+
     private final Set location;
     private Boolean occupied;
     private Building type;
 
-    public Intersection()
-    {
-        location = new Set();
-        occupied = false;
-        type = null;
+    public Intersection() {
+        location=new Set();
+        occupied=false;
+        type=null;
     }
 
-    public Intersection(int a, int b)
-    {
-        location = new Set(a, b);
+    public Intersection(int a, int b) {
+        location=new Set(a, b);
+        occupied=false;
+        type=null;
     }
 
-    public void setOcc(boolean toSet)
-    {
-        occupied = toSet;
+    public void setOcc(boolean toSet) {
+        occupied=toSet;
     }
 
-    public void setType(Building built)
-    {
-        type = built;
+    public void setType(Building built) {
+        type=built;
     }
 
-    public Building getType()
-    {
+    public Building getType() {
         return type;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return location.x;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return location.y;
     }
 
-//    public boolean isValid()
-//    {
-//        if (occupied == true)
-//        {
-//            return false;
-//        }
-//        
-//        else
-//        {
-//            return Board.isValid(location.x, location.y);
-//        }
-//    }
+    public boolean isValid(int x, int y, String str) throws invalidLocationException {
+        if (occupied==true) {
+            Dialogs.invalidSettTaken();
+            return false;
+        } else {
+            boolean valid=true;
+            switch (str.toUpperCase()) {
+                case "TL":
+                    if (Board.table[x][y-1].get("ML").occupied||Board.table[x][y].get("ML").occupied||Board.table[x][y].get("TR").occupied) {
+                        valid=false;
+                    }
+                    break;
+                case "TR":
+                    if (Board.table[x][y-1].get("MR").occupied||Board.table[x][y].get("TL").occupied||Board.table[x][y].get("MR").occupied) {
+                        valid=false;
+                    }
+                    break;
+                case "ML":
+                    if (x%2==0) {
+                        if (Board.table[x-1][y].get("TL").occupied||Board.table[x][y].get("TL").occupied||Board.table[x][y].get("LL").occupied) {
+                            valid=false;
+                        }
+                    } else {
+                        if (Board.table[x-1][y+1].get("TL").occupied||Board.table[x][y].get("TL").occupied||Board.table[x][y].get("LL").occupied) {
+                            valid=false;
+                        }
+                    }
+                    break;
+                case "MR":
+                    if (x%2==0) {
+                        if (Board.table[x+1][y].get("TR").occupied||Board.table[x][y].get("TR").occupied||Board.table[x][y].get("LR").occupied) {
+                            valid=false;
+                        }
+                    } else {
+                        if (Board.table[x+1][y+1].get("TR").occupied||Board.table[x][y].get("TL").occupied||Board.table[x][y].get("LL").occupied) {
+                            valid=false;
+                        }
+                    }
+                break;
+                case "LL":
+                    if (Board.table[x][y+1].get("ML").occupied||Board.table[x][y].get("ML").occupied||Board.table[x][y].get("LR").occupied) {
+                        valid=false;
+                    }
+                break;
+                case "LR":
+                    if (Board.table[x][y+1].get("MR").occupied||Board.table[x][y].get("MR").occupied||Board.table[x][y].get("LL").occupied) {
+                        valid=false;
+                    }
+            }
+            
+            if (!valid)
+            {
+                Dialogs.invalidSettDist();
+            }
+            
+            return valid;
+        }
+    }
 }

@@ -117,6 +117,22 @@ public class Dialogs
                 "Inane error",
                 JOptionPane.ERROR_MESSAGE);
     }
+    
+    public static void invalidSettDist()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "That is not a valid location! You must be at least two spaces away from another settlement.",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public static void invalidSettTaken()
+    {
+        JOptionPane.showMessageDialog(frame,
+                "That is not a valid location! That spot is already taken.",
+                "Inane error",
+                JOptionPane.ERROR_MESSAGE);
+    }
 
     public static void cardsError()
     {

@@ -75,37 +75,38 @@ public class Player
 
     public void buildSettlement(int x, int y, String str) throws invalidLocationException
     {
-//      if (place.isValid)
-
-        //if you have enough cards
-        if (hand[0] >= 1 && hand[1] >= 1 && hand[2] >= 2 && hand[3] >= 1)
+        if (Board.table[x][y].get(str).isValid(x, y, str))
         {
-            //if you have enough settlements
-            if (settlementsLeft > 0)
+            //if you have enough cards
+//            if (hand[0] >= 1 && hand[1] >= 1 && hand[2] >= 2 && hand[3] >= 1)
             {
+                //if you have enough settlements
+                if (settlementsLeft > 0)
                 {
-                    Board.table[x][y].get(str).setOcc(true);
-                    Board.table[x][y].get(str).setType(new Settlement(this));
-                    //remove settlements left
-                    settlementsLeft--;
-                    //remove cards
-                    for (int i = 0; i < 4; i++)
                     {
-                        hand[i] = hand[i]--;
+                        Board.table[x][y].get(str).setOcc(true);
+                        Board.table[x][y].get(str).setType(new Settlement(this));
+                        //remove settlements left
+                        settlementsLeft--;
+                        //remove cards
+                        for (int i = 0; i < 4; i++)
+                        {
+                            hand[i] = hand[i]--;
+                        }
+                        points++;
                     }
-                    points++;
+                }
+
+                else
+                {
+                    Dialogs.noSett();
                 }
             }
 
-            else
-            {
-                Dialogs.noSett();
-            }
-        }
-
-        else
-        {
-            Dialogs.cardsError();
+//            else
+//            {
+//                Dialogs.cardsError();
+//            }
         }
     }
 

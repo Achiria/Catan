@@ -297,23 +297,31 @@ public class Layout extends javax.swing.JFrame
 
     private void buttRoadActionPerformed(java.awt.event.ActionEvent evt)
     {
-        try
+        if (Actions.getRolled())
         {
-            Scanner in = new Scanner(System.in);
-            String input = Dialogs.buildPlace();
-            input = input.trim();
-            int xPoint = Integer.parseInt(input.substring(0, 1));
-            int yPoint = Integer.parseInt(input.substring(2, 3));
-            String loc = input.substring(4, input.length());
-            Tile t = Board.table[xPoint][yPoint];
-            Crease cre = t.getCrease(loc);
-            Turn.getPlayer().buildRoad(cre);
-            repaint();
-        }
+            try
+            {
+                Scanner in = new Scanner(System.in);
+                String input = Dialogs.buildPlace();
+                input = input.trim();
+                int xPoint = Integer.parseInt(input.substring(0, 1));
+                int yPoint = Integer.parseInt(input.substring(2, 3));
+                String loc = input.substring(4, input.length());
+                Tile t = Board.table[xPoint][yPoint];
+                Crease cre = t.getCrease(loc);
+                Turn.getPlayer().buildRoad(cre);
+                repaint();
+            }
 
-        catch (invalidLocationException ex)
+            catch (invalidLocationException ex)
+            {
+                System.err.println(Arrays.toString(ex.getStackTrace()));
+            }
+        }
+        
+        else 
         {
-            System.err.println(Arrays.toString(ex.getStackTrace()));
+            Dialogs.rollError();
         }
     }
 

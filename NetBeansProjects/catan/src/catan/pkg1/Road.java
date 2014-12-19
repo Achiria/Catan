@@ -31,7 +31,7 @@ public class Road
         return owner;
     }
     
-    public int getRoadLength(Road given)
+    public int getRoadLength()
     {
         return 0;
     }
